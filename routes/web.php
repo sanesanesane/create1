@@ -34,4 +34,4 @@ Route::middleware([
     })->name('dashboard');
 });
 
-//テストよう
+//テスト用
