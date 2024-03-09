@@ -3,6 +3,12 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use Symfony\Component\Mime\Test\Constraint\EmailSubjectContains;
+
+//以下コントローラーを使用　
+use App\Http\Controllers\BookController;
+use App\Http\Controllers\SubjectController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -34,4 +40,17 @@ Route::middleware([
     })->name('dashboard');
 });
 
-//テスト用
+//以下ルート
+//〇科目関連のルート
+Route::get('subjects/create',[SubjectController::class,'create'])->name('subjects.create');
+Route::post('subjects/store',[SubjectController::class,'store'])->name('subjects.store');
+Route::get('subjects/index',[SubjectController::class,'index'])->name('subjects.index');
+Route::delete('subjects/delete',[SubjectController::class,'delete'])->name('subjects.delete');
+Route::get('subjects/edit',[SubjectController::class,'edit'])->name('subjects.edit');
+
+//〇本・施設登録関連のルート
+Route::get('books/create',[BookController::class,'create'])->name('books.create');
+Route::post('books/store',[BookController::class,'store'])->name('books.store');
+Route::get('books/index',[BookController::class,'index'])->name('books.index');
+Route::delete('books/delete',[BookController::class,'delete'])->name('books.delete');
+Route::get('books/edit',[BookController::class,'edit'])->name('books.edit');
