@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Subject;
-use Illuminate\Contracts\Validation\Rule;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Validation\Rule;
+
 
 class SubjectController extends Controller
 {
@@ -26,7 +28,7 @@ class SubjectController extends Controller
                 'required', //絶対に入れる
                 'string', //文字列であるべき
                 'max:50', //50文字まで
-                Rule::unique('subjects') //同じ科目を一つにする(モデルの調整必要)
+                Rule::Unique('subjects') //同じ科目を一つにする(モデルの調整必要)
                 ->where(function ($query) //クエリを参照
                 {
                     return $query->where('user_id', auth()->id())->whereNull('deleted_at');
@@ -44,7 +46,6 @@ class SubjectController extends Controller
         $subjects->name = $request->name;
         $subjects->save(); //保存
 
-        // 保存ロジック
         return redirect()->route('subjects.index')->with('success', '登録完了しました！'); 
 
     }
@@ -52,21 +53,61 @@ class SubjectController extends Controller
     // 科目の一覧を表示
     public function index()
     {
-        // 科目一覧取得ロジック
-        return view('subjects.index');
+        $subjects = Subject::where('user_id', auth()->id())->get();
+        //変数subjectsにSubjectデータを現在認証しているユーザーのみを条件にデータを取得。
+
+        return view('subjects.index',['subjects'=> $subjects]);
     }
 
     // 科目を削除
-    public function delete($id)
+    public function delete(Subject $subjects)
     {
-        // 削除ロジック
-        return redirect()->route('subjects.index');
+        if
+        ($subjects->books()->exist())
+        {
+           return  redirect()->route('subjects.index')->with('error','関連データが存在する為削除できません！');
+        }
+
+        else
+        $subjects->delete();
+        return redirect()->route('subjects.index')->with('success', '削除しました！');
     }
 
     // 科目の編集フォームを表示
-    public function edit($id)
+    public function edit(Subject $subjects)
     {
-        // 編集データ取得ロジック
-        return view('subjects.edit');
+        return view('subjects.edit',['subjects'=> $subjects]);
+    }
+
+    //科目のアップデート
+    public function update(Request $request, Subject $subjects)
+    {
+        $validationData = $request->validate
+        (
+            [
+            'name'=>
+                [
+                'required', //絶対に入れる
+                'string', //文字列であるべき
+                'max:50', //50文字まで
+                Rule::Unique('subjects') //同じ科目を一つにする(モデルの調整必要)
+                ->where(function ($query) //クエリを参照
+                    {
+                    return $query->where('user_id', auth()->id())->whereNull('deleted_at');
+                    //user idが現在ログインしているユーザーと一致している情報のみ→削除されているものは除外です。
+                    }),
+
+                ],
+            ],
+
+            [
+                // カスタムエラーメッセージ
+                'name.required' => '科目の名前は必須です。', 'name.unique' => 'この科目はすでに使用されています。',
+            ]
+
+        );
+        // バリデーションが成功したらカテゴリを更新
+        $subjects->update($request->all()); //入力されたものをすべて取得
+        return redirect()->route('subjects.index')->with('success', '科目変更完了しました！');
     }
 }

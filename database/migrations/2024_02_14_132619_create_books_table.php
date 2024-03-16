@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('books', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('category_id')->constrained()->onDelete('cascade');
             $table->string('name');
             $table->string('author');
             $table->text('description');
             $table->string('amazon_link')->nullable();
+            $table->softDeletes(); 
             $table->timestamps();
         });
     }
