@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Book;
 use App\Models\Subject;
 use Symfony\Component\Mime\Test\Constraint\EmailSubjectContains;
+use Illuminate\Support\HtmlString;
 
 class BookController extends Controller
 {

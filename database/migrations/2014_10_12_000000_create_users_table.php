@@ -3,6 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+//クリエイトは作り直す。
+//もし修正する場合、デリート作成して消すこと！
 
 return new class extends Migration
 {

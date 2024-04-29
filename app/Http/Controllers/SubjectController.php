@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Subject;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\HtmlString;
 
 
 class SubjectController extends Controller
