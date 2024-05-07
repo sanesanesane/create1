@@ -8,18 +8,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Subject extends Model
 {
-    use HasFactory, SoftDeletes;
-
-    protected $fillable = ['name', 'user_id'];
-
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
+    use HasFactory;
 
     public function books()
     {
-    return $this->belongsToMany(Book::class);
+    return $this->belongsTo(Book::class);
     }
 
 }

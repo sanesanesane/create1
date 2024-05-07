@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 //以下のモデルを使用
 use App\Models\Book;
 use App\Models\Subject;
+use App\Models\Country;
+use App\MOdels\Age;
 use Symfony\Component\Mime\Test\Constraint\EmailSubjectContains;
 use Illuminate\Support\HtmlString;
 
@@ -16,8 +18,11 @@ class BookController extends Controller
     public function create()
     {
         $subjects = Subject::where('user_id', auth()->id())->get();
+        $countries = Country::where('user_id', auth()->id())->get();
+        $ages = Age::where('user_id', auth()->id())->get();
 
-        return view('books.create', compact('subjects')); 
+
+        return view('books.create', compact('subjects','countries','ages')); 
     }
 
     // 本をデータベースに保存
@@ -26,6 +31,8 @@ class BookController extends Controller
         $books = new Book();
         $books->user_id = auth()->id(); //外部キー関連
         $books->subject_id = $request->input('subject_id');
+        $books->country_id = $request->input('country_id');
+        $books->age_id = $request->input('age_id');
         $books->save();
 
         return redirect()->route('books.index');
@@ -37,8 +44,10 @@ class BookController extends Controller
         $userId = auth()->id();
         $query = Book::where('user_id', $userId);
         $subjects = Subject::where('user_id', auth()->id())->get();
+        $countries = Country::where('user_id', auth()->id())->get();
+        $ages = Age::where('user_id', auth()->id())->get();
 
-        return view('books.index',compact('books','subjects'));
+        return view('books.index',compact('books','subjects','countries','ages'));
     }
 
     // 本を削除
@@ -56,7 +65,7 @@ class BookController extends Controller
 
         $books->update($request->all()); //入力されたものをすべて取得
         // 編集データ取得ロジック
-        return view('books.edit',compact('books','subjects'));
+        return view('books.edit',compact('books','subjects','countries','ages'));
     }
 
 }
