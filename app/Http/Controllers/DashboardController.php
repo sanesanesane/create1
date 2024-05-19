@@ -4,16 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+
+
 class DashboardController extends Controller
 {
 public function index()
 {
-return view ('dashboard.title');
+return view ('Dashboard.vue');
 }
 
-public function memu()
+public function menu()
 {
-    return view ('dashboard.menu');
+    return view ('Dashboard.menu'); 
 }
 
 }
+
+

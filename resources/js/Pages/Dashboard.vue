@@ -1,3 +1,4 @@
+
 <script setup>
 import AppLayout from '@/Layouts/AppLayout.vue';
 import Welcome from '@/Components/Welcome.vue';
@@ -8,7 +9,7 @@ import Welcome from '@/Components/Welcome.vue';
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 タイトル
-            </h2>
+                </h2>
         </template>
 
         <div class="py-12">
@@ -18,26 +19,16 @@ import Welcome from '@/Components/Welcome.vue';
                 <div class="p-6 text-gray-900">
                     <div class="mb-4">
                         <a href="{{ route('dashboard.title') }}">
-                            <x-primary-button>
-                                テスト
-                            </x-primary-button>
-
+                            てすと
                         </a>
                         </div>
-
                     <div class="mb-4">
                         <a href="{{ route('dashboard.menu') }}">
-                            <x-primary-button>
-                                テスト2
-                            </x-primary-button>
+                            
+                            てすと
+                            
                         </a>
                     </div>
-
-
-                    
-
-                    
-
 </div>
 </div>
 </div>
