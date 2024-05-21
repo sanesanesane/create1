@@ -4,6 +4,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Symfony\Component\Mime\Test\Constraint\EmailSubjectContains;
+use Illuminate\Support\Facades\Log;
 
 //以下コントローラーを使用　
 use App\Http\Controllers\BookController;
@@ -44,10 +45,15 @@ Route::middleware([
     })->name('dashboard');
 });
 
+Route::get('/test', function () {
+    return view('test');
+});
+
 //以下ルート
 //〇タイトル画面についてのルート
-Route::get('title/view',[DashboardController::class,'index'])->name('dashboard.title');
-Route::get('title/menu',[DashboardController::class,'menu'])->name('dashboard.menu');
+Log::debug('/Test route was called');
+Route::get('/title/view',[DashboardController::class,'index'])->name('dashboard.title');
+Route::get('/title/menu',[DashboardController::class,'menu'])->name('dashboard.menu');
 
 //〇科目関連のルート
 Route::get('subjects/create',[SubjectController::class,'create'])->name('subjects.create');
