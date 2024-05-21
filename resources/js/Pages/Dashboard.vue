@@ -21,6 +21,5 @@ import Welcome from '@/Components/Welcome.vue';
                             てすと
                             
                         </a>
-
     </AppLayout>
 </template>

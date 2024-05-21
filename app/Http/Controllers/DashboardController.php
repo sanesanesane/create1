@@ -11,14 +11,12 @@ class DashboardController extends Controller
 {
 public function index()
 {
-    Log::debug('DashboardController@index was called');
-return view ('Dashboard.title');
+return view ('dashboard.title');
 }
 
 public function menu()
 {
-    Log::debug('DashboardController@index was called');
-    return view ('Dashboard.menu'); 
+    return view ('dashboard.menu');
 }
 
 }
