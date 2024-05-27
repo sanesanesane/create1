@@ -1,45 +1,21 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Title View</title>
+    <title>menu View</title>
 </head>
 <body>
     <h1>Title View</h1>
+    <a :href="route('subjects.create')">
+        教科
+    </a>
+
+    <a :href="route('countries.create')">
+        地域
+    </a>
+
+    <a :href="route('ages.create')">
+        時代
+    </a>
+
 </body>
 </html>
-=======
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('ホーム') }}
-        </h2>
-    </x-slot>
-    <div class="py-12">
-        <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="p-6 text-gray-900">
-
-                        <div class="mb-4">
-                            <a href="{{ route('dashboard.title') }}">
-                                <x-primary-button>
-                                    テスト
-                                </x-primary-button>
-                            </a>
-                        </div>
-
-                        <div class="mb-4">
-                            <a href="{{ route('dashboard.menu') }}">
-                                <x-primary-button>
-                                    テスト2
-                                </x-primary-button>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</x-app-layout>
->>>>>>> e54a9fbc9a92227cba9d938ff6ddb6f8ab77c5b7

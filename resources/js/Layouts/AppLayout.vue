@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref } from 'vue';
 import { Head, Link, router } from '@inertiajs/vue3';
 import ApplicationMark from '@/Components/ApplicationMark.vue';
 import Banner from '@/Components/Banner.vue';
@@ -7,19 +7,6 @@ import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
 import NavLink from '@/Components/NavLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
-
-// JavaScriptからURLを取得してVueの変数に格納
-const dashboardTitleUrl = ref('');
-const dashboardMenuUrl = ref('');
-
-onMounted(() => {
-    if (typeof window !== 'undefined' && window.routes) {
-        dashboardTitleUrl.value = window.routes.dashboardTitle;
-        dashboardMenuUrl.value = window.routes.dashboardMenu;
-    } else {
-        console.error("window.routes is not defined or window is undefined");
-    }
-});
 
 defineProps({
     title: String,

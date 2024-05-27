@@ -1,5 +1,5 @@
 <script setup>
-import AppLayout from '@/Layouts/AppLayout.vue';
+import Welcome from '@/Components/Welcome.vue';
 </script>
 
 <template>
@@ -7,12 +7,19 @@ import AppLayout from '@/Layouts/AppLayout.vue';
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 タイトル
-            </h2>
+                </h2>
         </template>
-        <template #default="{ dashboardTitleUrl, dashboardMenuUrl }">
-            <!-- 変数からURLを使用 -->
-            <a :href="dashboardTitleUrl">Title View</a>
-            <a :href="dashboardMenuUrl">Menu View</a>
-        </template>
+
+
+        <a :href="route('dashboard.title')">
+                            てすと
+                        </a>
+
+
+        <a :href="route('dashboard.menu')">test</a>
+                            
+                            
+                            
+                        
     </AppLayout>
 </template>
