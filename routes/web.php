@@ -13,6 +13,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\AgeController;
 use App\Http\Controllers\Museumcontroller;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProfileController;
 
 
 /*
@@ -50,6 +52,10 @@ Route::get('/test', function () {
 });
 
 //以下ルート
+
+//〇追加要綱
+Route::get('/', [HomeController::class, 'index']);
+Route::get('/profile', [ProfileController::class, 'show']);
 //〇タイトル画面についてのルート
 Log::debug('/Test route was called');
 Route::get('/title/view',[DashboardController::class,'index'])->name('dashboard.title');
