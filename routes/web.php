@@ -15,6 +15,7 @@ use App\Http\Controllers\AgeController;
 use App\Http\Controllers\Museumcontroller;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\WorkController;
 
 
 /*
@@ -57,7 +58,7 @@ Route::get('/test', function () {
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/profile', [ProfileController::class, 'show']);
 //〇タイトル画面についてのルート
-Log::debug('/Test route was called');
+
 Route::get('/title/view',[DashboardController::class,'index'])->name('dashboard.title');
 Route::get('/title/menu',[DashboardController::class,'menu'])->name('dashboard.menu');
 
@@ -95,4 +96,7 @@ Route::post('museums/store',[Museumcontroller::class,'store'])->name('museums.st
 Route::get('museums/index',[Museumcontroller::class,'index'])->name('museums.index');
 Route::delete('museums/delete',[Museumcontroller::class,'delete'])->name('museums.delete');
 Route::get('museums/edit',[Museumcontroller::class,'edit'])->name('museums.edit');
+
+//〇作品登録関連のルート
+Route::get('works/create',[WorkController::class,'create'])->name('works.create');
 

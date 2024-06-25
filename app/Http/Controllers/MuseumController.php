@@ -16,12 +16,8 @@ class MuseumController extends Controller
         // 本の作成フォームを表示
         public function create()
         {
-            $subjects = Subject::where('user_id', auth()->id())->get();
-            $countries = Country::where('user_id', auth()->id())->get();
-            $ages = Age::where('user_id', auth()->id())->get();
     
-    
-            return view('museums.create', compact('subjects','countries','ages')); 
+            return view('museums.create');
         }
     
         // 本をデータベースに保存

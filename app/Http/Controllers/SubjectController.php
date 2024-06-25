@@ -30,11 +30,6 @@ class SubjectController extends Controller
                 'string', //文字列であるべき
                 'max:50', //50文字まで
                 Rule::Unique('subjects') //同じ科目を一つにする(モデルの調整必要)
-                ->where(function ($query) //クエリを参照
-                {
-                    return $query->where('user_id', auth()->id())->whereNull('deleted_at');
-                    //user idが現在ログインしているユーザーと一致している情報のみ→削除されているものは除外です。
-                }),
 
             ],
             ],
@@ -54,8 +49,6 @@ class SubjectController extends Controller
     // 科目の一覧を表示
     public function index()
     {
-        $subjects = Subject::where('user_id', auth()->id())->get();
-        //変数subjectsにSubjectデータを現在認証しているユーザーのみを条件にデータを取得。
 
         return view('subjects.index',['subjects'=> $subjects]);
     }
@@ -92,11 +85,7 @@ class SubjectController extends Controller
                 'string', //文字列であるべき
                 'max:50', //50文字まで
                 Rule::Unique('subjects') //同じ科目を一つにする(モデルの調整必要)
-                ->where(function ($query) //クエリを参照
-                    {
-                    return $query->where('user_id', auth()->id())->whereNull('deleted_at');
-                    //user idが現在ログインしているユーザーと一致している情報のみ→削除されているものは除外です。
-                    }),
+
 
                 ],
             ],

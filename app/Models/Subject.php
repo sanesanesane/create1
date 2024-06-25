@@ -15,4 +15,11 @@ class Subject extends Model
     return $this->belongsTo(Book::class);
     }
 
+    public function works()
+    {
+        return $this->hasMany(Work::class);
+    }
+
+    
+
 }

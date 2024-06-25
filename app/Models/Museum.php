@@ -24,4 +24,11 @@ public function Age()
    return $this->hasone(Age::class);
 }
 
+public function works()
+{
+    return $this->hasMany(Work::class);
+}
+
+
+
 }
