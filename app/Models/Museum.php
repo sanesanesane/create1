@@ -9,6 +9,8 @@ class Museum extends Model
 {
     use HasFactory;
 
+    protected $table = 'museums';
+
     public function subjects()
    {
     return $this->hasOne(Subject::class);

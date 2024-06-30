@@ -10,6 +10,9 @@ class Subject extends Model
 {
     use HasFactory;
 
+    protected $table = 'subjects';
+    //テーブルの名前と関連。
+
     public function books()
     {
     return $this->belongsTo(Book::class);
