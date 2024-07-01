@@ -99,4 +99,6 @@ Route::get('museums/edit',[Museumcontroller::class,'edit'])->name('museums.edit'
 
 //〇作品登録関連のルート
 Route::get('works/create',[WorkController::class,'create'])->name('works.create');
+Route::get('works/store',[WorkController::class,'store'])->name('works.store');
+
 

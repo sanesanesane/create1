@@ -18,7 +18,7 @@ class Museum extends Model
 
 public function country()
 {
-   return $this->hasone(country::class);
+   return $this->hasone(Country::class);
 }
 
 public function Age()

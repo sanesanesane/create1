@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Subject;
 use App\Models\Age;
 use App\Models\Museum;
-use App\Models\country;
+use App\Models\Country;
 
 class WorkController extends Controller
 {
@@ -15,15 +15,13 @@ class WorkController extends Controller
         $subjects = Subject::all();
         $ages = Age::all();
         $museums = Museum::all();
-        $countries = country::all();
+        $countries = Country::all();
         return view('works.create', compact('subjects','ages','museums','countries'));
     }
 
     public function store(Request $request)
 
     {
-
-        $subjects = $this->subject->get();
         return view('work.create', compact('subjects'));
     }
     
