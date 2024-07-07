@@ -5,7 +5,7 @@
 </head>
 <body>
     <h1>{{$title }}</h1>
-    <a href="{{ route('works.create') }}">美術館登録</a>
-    <a href="{{ route('museums.index') }}">美術館一覧</a>
+    <a href="{{ route('works.create') }}">作品登録</a>
+    <a href="{{ route('works.index') }}">作品一覧</a>
 </body>
 </html>
