@@ -14,6 +14,7 @@
             <th>科目</th>
             <th>作者</th>
             <th>地域</th>
+            <th>リンク</th>
         </tr>
     </thead>
 
@@ -21,7 +22,7 @@
         @foreach ($works as $work)
 
         <tr>
-            <td>{{ $work->work_id }}</td>
+            <td><a href="{{ route('works.show', $work->work_id) }}"></a></td>
             <td>{{ $work->work_name }}</td>
             <td>{{ $work->subject->subject_Name }}</td> 
             <td>{{ $work->work_artist }}</td>

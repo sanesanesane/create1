@@ -58,6 +58,14 @@ class WorkController extends Controller
         $works = $query->paginate(10);
         return view('works.index', compact('works'));
     }
-    
+
+    public function show ($id)
+    {
+        $work=Work::find($id);
+        return view('works.show',compact('work'));
+    }
+
+
+
     
 }
