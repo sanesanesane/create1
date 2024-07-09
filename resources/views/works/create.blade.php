@@ -49,6 +49,10 @@
     <textarea name="work_description" cols="60" rows="5"></textarea><br>
     
     <input type="submit" value='登録'>
+
+    <div>
+        <a href="{{ route('home.index') }}">ホームへ戻る</a>
+    </div>
 </form>
 
 

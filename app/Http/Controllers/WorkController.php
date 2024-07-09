@@ -38,10 +38,24 @@ class WorkController extends Controller
         return redirect()->route('works.create')->with('success', '作品が登録されました');
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $works = Work::all();//DBからデータ全部取得
+
+        $query = Work::with('subject');
+
+        $search = $request->input('search');
+        $search = trim($search);
+
+        if ($search) {
+            $query->where(function($q) use ($search)
+             {
+                // 内部クエリを作成
+                $q->where('work_name', 'LIKE', "%$search%")
+                  ->orWhere('work_artist', 'LIKE', "%$search%");
+            });
+        }
         
+        $works = $query->paginate(10);
         return view('works.index', compact('works'));
     }
     

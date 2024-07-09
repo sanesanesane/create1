@@ -55,8 +55,8 @@ Route::get('/test', function () {
 //以下ルート
 
 //〇追加要綱
-Route::get('/', [HomeController::class, 'index']);
-Route::get('/profile', [ProfileController::class, 'show']);
+Route::get('/', [HomeController::class, 'index'])->name('home.index');
+Route::get('/profile', [ProfileController::class, 'show'])->name('home.show');
 //〇タイトル画面についてのルート
 
 Route::get('/title/view',[DashboardController::class,'index'])->name('dashboard.title');
@@ -66,8 +66,6 @@ Route::get('/title/menu',[DashboardController::class,'menu'])->name('dashboard.m
 Route::get('subjects/create',[SubjectController::class,'create'])->name('subjects.create');
 Route::post('subjects/store',[SubjectController::class,'store'])->name('subjects.store');
 Route::get('subjects/index',[SubjectController::class,'index'])->name('subjects.index');
-Route::delete('subjects/delete',[SubjectController::class,'delete'])->name('subjects.delete');
-Route::get('subjects/edit',[SubjectController::class,'edit'])->name('subjects.edit');
 
 //〇地域関連のルート
 Route::get('countries/create',[CountryController::class,'create'])->name('countries.create');
