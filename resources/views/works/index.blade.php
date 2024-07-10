@@ -22,7 +22,7 @@
         @foreach ($works as $work)
 
         <tr>
-            <td><a href="{{ route('works.show', $work->work_id) }}"></a></td>
+            <td><a href="{{ route('works.show', $work->id) }}">{{ $work->work_id }}</a></td>
             <td>{{ $work->work_name }}</td>
             <td>{{ $work->subject->subject_Name }}</td> 
             <td>{{ $work->work_artist }}</td>

@@ -10,6 +10,11 @@ class Work extends Model
 {
     use HasFactory;
 
+    // Workモデル
+
+    protected $primaryKey = 'work_id';
+
+
     protected $fillable = 
     [
         'subject_ID',
