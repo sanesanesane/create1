@@ -99,7 +99,6 @@ Route::get('museums/edit',[Museumcontroller::class,'edit'])->name('museums.edit'
 Route::get('works/create',[WorkController::class,'create'])->name('works.create');
 Route::post('works/store',[WorkController::class,'store'])->name('works.store');
 Route::get('works/index',[WorkController::class,'index'])->name('works.index');
-Route::get('works/show/{work}',[WorkController::class,'show'])->name('works.show');
-
+Route::get('works/show/{work}', [WorkController::class, 'show'])->name('works.show');
 
 

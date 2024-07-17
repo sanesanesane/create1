@@ -59,13 +59,16 @@ class WorkController extends Controller
         return view('works.index', compact('works'));
     }
 
-    public function show ($id)
+    //public function show ($id)
+    //{
+        //$work=Work::find($id);
+        //return view('works.show',compact('work'));
+    //}
+
+    public function show($work)
     {
-        $work=Work::find($id);
-        return view('works.show',compact('work'));
+        $work = Work::findOrFail($work); // モデルが見つからない場合はエラーを返す
+        return view('works.show', compact('work'));
     }
-
-
-
     
 }

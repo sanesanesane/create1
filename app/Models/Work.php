@@ -43,7 +43,7 @@ class Work extends Model
 
     public function museum()
     {
-        return $this->belongsTo(Museum::class);
+        return $this->belongsTo(Museum::class,'museum_id','museum_ID');
     }
 
     
