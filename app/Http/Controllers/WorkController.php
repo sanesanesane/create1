@@ -76,7 +76,15 @@ class WorkController extends Controller
     
     public function update(Request $request,Work $work)
     {
-        $work->update($request->all());
+        $work -> subject_ID = $request->input('subject_id');
+        $work -> age_ID = $request->input('age_id');
+        $work -> country_ID = $request->input('country_id');
+        $work -> museum_ID = $request->input('museum_id');
+        $work->work_name = $request->input('work_name');
+        $work->work_artist = $request->input('author_name'); 
+        $work->work_description = $request->input('work_description'); 
+        $work->update();
+
         return redirect()->route('works.index')->with('success', '作品が更新されました');
     }
 }

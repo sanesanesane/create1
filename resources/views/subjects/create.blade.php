@@ -5,7 +5,7 @@
     <!-- 他のフォームフィールド -->
 
 <label>科目名</label><br>
-<input type="text" name="subject_name" maxlength="15" value="" placeholder="作者名"><br>
+<input type="text" name="subject_name" maxlength="15" value="" placeholder="科目名"><br>
 
 <input type="submit" value='登録'>
 
