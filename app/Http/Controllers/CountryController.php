@@ -33,9 +33,8 @@ class CountryController extends Controller
     // 科目の一覧を表示
     public function index()
     {
-        
-
-        return view('countries.index',['countries'=> $countries]);
+        $countries=Country::all();
+        return view('countries.index',compact('countries'));
     }
 
 }

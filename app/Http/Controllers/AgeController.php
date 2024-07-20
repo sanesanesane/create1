@@ -23,8 +23,10 @@ class AgeController extends Controller
         // 科目の一覧を表示
         public function index()
         {
-            return view('ages.index',['ages'=> $ages]);
+            $ages=Age::all();
+            return view('ages.index',compact('ages'));
         }
+
 
             // 科目をデータベースに保存
     public function store(Request $request)

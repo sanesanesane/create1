@@ -24,12 +24,11 @@ class MuseumController extends Controller
         public function store(Request $request)
         {
             $museums = new Museum();
-            $museums->user_id = auth()->id(); //外部キー関連
-            $museums->subject_id = $request->input('subject_id');
-            $museums->country_id = $request->input('country_id');
-            $museums->age_id = $request->input('age_id');
+            $museums -> museum_Name =$request->input('museum_name');
+            $museums -> museum_Content =$request->input('museum_content');
+            $museums -> museum_API =$request->input('museum_api');
             $museums->save();
-    
+            
             return redirect()->route('museums.index');
         }
     

@@ -8,5 +8,9 @@
     <a href="{{ route('works.create') }}">作品登録</a>
     <a href="{{ route('works.index') }}">作品一覧</a>
     <a href="{{ route('dashboard.menu')}}">その他管理用登録画面</a>
+    <a href="{{ route('dashboard.title')}}">その他管理用一覧画面</a>
+    <div>
+        <a href="{{ route('museums.create')}}">美術館登録</a>
+    </div>
 </body>
 </html>

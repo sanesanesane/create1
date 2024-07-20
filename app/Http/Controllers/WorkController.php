@@ -59,16 +59,24 @@ class WorkController extends Controller
         return view('works.index', compact('works'));
     }
 
-    //public function show ($id)
-    //{
-        //$work=Work::find($id);
-        //return view('works.show',compact('work'));
-    //}
-
     public function show($work)
     {
         $work = Work::findOrFail($work); // モデルが見つからない場合はエラーを返す
         return view('works.show', compact('work'));
     }
+
+    public function edit(Work $work)
+    {
+        $subjects = Subject::all();
+        $ages = Age::all();
+        $museums = Museum::all();
+        $countries = Country::all();
+        return view('works.edit',compact('work','subjects','ages','museums','countries'));
+    }
     
+    public function update(Request $request,Work $work)
+    {
+        $work->update($request->all());
+        return redirect()->route('works.index')->with('success', '作品が更新されました');
+    }
 }

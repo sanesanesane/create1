@@ -100,5 +100,8 @@ Route::get('works/create',[WorkController::class,'create'])->name('works.create'
 Route::post('works/store',[WorkController::class,'store'])->name('works.store');
 Route::get('works/index',[WorkController::class,'index'])->name('works.index');
 Route::get('works/show/{work}', [WorkController::class, 'show'])->name('works.show');
+Route::get('works/{work}/edit', [WorkController::class, 'edit'])->name('works.edit');
+Route::patch('works/{work}', [WorkController::class, 'update'])->name('works.update');
+
 
 

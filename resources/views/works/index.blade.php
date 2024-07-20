@@ -14,7 +14,6 @@
             <th>科目</th>
             <th>作者</th>
             <th>地域</th>
-            <th>リンク</th>
         </tr>
     </thead>
 
