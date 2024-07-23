@@ -78,8 +78,7 @@ Route::get('countries/edit',[CountryController::class,'edit'])->name('countries.
 Route::get('ages/create',[AgeController::class,'create'])->name('ages.create');
 Route::post('ages/store',[AgeController::class,'store'])->name('ages.store');
 Route::get('ages/index',[AgeController::class,'index'])->name('ages.index');
-Route::delete('ages/delete',[AgeController::class,'delete'])->name('ages.delete');
-Route::get('ages/edit',[AgeController::class,'edit'])->name('ages.edit');
+Route::patch('ages/{age}/delete',[AgeController::class,'delete'])->name('ages.delete');
 
 //〇本登録関連のルート
 Route::get('books/create',[BookController::class,'create'])->name('books.create');
@@ -102,6 +101,3 @@ Route::get('works/index',[WorkController::class,'index'])->name('works.index');
 Route::get('works/show/{work}', [WorkController::class, 'show'])->name('works.show');
 Route::get('works/{work}/edit', [WorkController::class, 'edit'])->name('works.edit');
 Route::patch('works/{work}', [WorkController::class, 'update'])->name('works.update');
-
-
-

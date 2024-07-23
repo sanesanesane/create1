@@ -23,7 +23,23 @@ class CountryController extends Controller
     public function store(Request $request)
     {
         $country = new Country;
-        $country ->country_Name = $request->input('country_name');
+        $country_name = $request->input('country_name');
+
+        $country_name = trim($country_name);
+        $country_name = mb_convert_kana($country_name, 'ASKV', 'UTF-8');
+
+        if(mb_strlen($country_name, 'UTF-8') > 16)
+        {
+            return redirect()->route('countries.index')->with('error',"最大入力文字は8文字までです。");
+        }
+
+        if (Country::where('country_Name', $country_name)->exists()) 
+        {
+            return redirect()->route('countries.index')->with('error',"この年代は既に登録されています。");
+        }
+
+
+        $country ->country_Name = $country_name;
         $country->save(); 
 
         return redirect()->route('countries.create')->with('success', '登録完了しました！'); 

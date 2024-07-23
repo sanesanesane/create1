@@ -5,7 +5,7 @@
     <!-- 他のフォームフィールド -->
 
 <label>年代・時代</label><br>
-<input type="text" name="age_name" maxlength="15" value="" placeholder="作者名"><br>
+<input type="text" name="age_name" maxlength="15" value="" placeholder="年代"><br>
 
 <input type="submit" value='登録'>
 
