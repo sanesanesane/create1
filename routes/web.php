@@ -78,7 +78,7 @@ Route::get('countries/edit',[CountryController::class,'edit'])->name('countries.
 Route::get('ages/create',[AgeController::class,'create'])->name('ages.create');
 Route::post('ages/store',[AgeController::class,'store'])->name('ages.store');
 Route::get('ages/index',[AgeController::class,'index'])->name('ages.index');
-Route::patch('ages/{age}/delete',[AgeController::class,'delete'])->name('ages.delete');
+Route::patch('ages/{age_ID}/delete',[AgeController::class,'delete'])->name('ages.delete');
 
 //〇本登録関連のルート
 Route::get('books/create',[BookController::class,'create'])->name('books.create');

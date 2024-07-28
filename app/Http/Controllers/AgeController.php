@@ -49,16 +49,19 @@ class AgeController extends Controller
             return view('ages.index',compact('ages'));
         }
 
-        public function delete(Request $request,$age)
+        public function delete(Request $request, Age $age_ID)
         {
-            $age = Age::find($age);
+            $age= Age::where('age_ID', $age_ID)->first();
+            
             if($age)
             {
                 $age->age_Name = '削除済み';
                 $age->update();
+                
 
-                return redirect()->route('subjects.index')->with('success', 'データを削除しました。');
+                return redirect()->route('ages.index')->with('success', 'データを削除しました。');
             }
+            return redirect()->route('ages.index')->with('error', 'データが見つかりません。');
         }
     
     }
