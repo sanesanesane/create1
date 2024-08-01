@@ -48,7 +48,7 @@
                 <td>
                 <form action="{{route('ages.delete', $age->age_ID)}}" method = 'post' >
                     @csrf
-                    @method('patch')
+                    @method('post')
                     <p>
                         <input type="submit" value="削除">
                     </p>

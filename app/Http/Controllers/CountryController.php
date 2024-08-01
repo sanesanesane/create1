@@ -35,7 +35,7 @@ class CountryController extends Controller
 
         if (Country::where('country_Name', $country_name)->exists()) 
         {
-            return redirect()->route('countries.index')->with('error',"この年代は既に登録されています。");
+            return redirect()->route('countries.index')->with('error',"この地域は既に登録されています。");
         }
 
 

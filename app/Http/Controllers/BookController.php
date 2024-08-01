@@ -8,6 +8,8 @@ use App\Models\Book;
 use App\Models\Subject;
 use App\Models\Country;
 use App\MOdels\Age;
+use App\Models\Work;
+
 use Symfony\Component\Mime\Test\Constraint\EmailSubjectContains;
 use Illuminate\Support\HtmlString;
 
@@ -17,9 +19,6 @@ class BookController extends Controller
         // 本の作成フォームを表示
     public function create()
     {
-        $subjects = Subject::where('user_id', auth()->id())->get();
-        $countries = Country::where('user_id', auth()->id())->get();
-        $ages = Age::where('user_id', auth()->id())->get();
 
 
         return view('books.create', compact('subjects','countries','ages')); 
@@ -41,11 +40,6 @@ class BookController extends Controller
     // 本の一覧を表示
     public function index()
     {
-        $userId = auth()->id();
-        $query = Book::where('user_id', $userId);
-        $subjects = Subject::where('user_id', auth()->id())->get();
-        $countries = Country::where('user_id', auth()->id())->get();
-        $ages = Age::where('user_id', auth()->id())->get();
 
         return view('books.index',compact('books','subjects','countries','ages'));
     }
