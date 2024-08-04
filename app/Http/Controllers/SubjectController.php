@@ -48,8 +48,22 @@ class SubjectController extends Controller
     
     public function index()
     {
-        $subjects=Subject::all();
+        $subjects=Subject::where('subject_Name', '!=', '削除済み')->where('subject_Name', '!=', '科目を選択してください。')->get();
         return view('subjects.index',compact('subjects'));
+    }
+
+    public function delete(Request $request, $subject_ID)
+    {
+        $subject = Subject::where('subject_ID', $subject_ID)->first();
+        
+        if ($subject) 
+        {
+            $subject->subject_Name = '削除済み';
+            $subject->update();
+            
+            return redirect()->route('subjects.index')->with('success', 'データを削除しました。');
+        }
+        return redirect()->route('subjects.index')->with('error', 'データが見つかりません。');
     }
 
 

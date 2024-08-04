@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>年代管理</title>
+    <title>年代一覧</title>
 </head>
 <body>
     <h1>〇年代</h1>
@@ -41,22 +41,22 @@
         </thead>
 
         <tbody>
-            @foreach ($ages as $age)
-            <tr>
-                <td>{{ $age->age_ID }}</td>
-                <td>{{ $age->age_Name }}</td>
-                <td>
-                <form action="{{route('ages.delete', $age->age_ID)}}" method = 'post' >
-                    @csrf
-                    @method('post')
-                    <p>
-                        <input type="submit" value="削除">
-                    </p>
-                </td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
+    @foreach ($ages as $age)
+    <tr>
+        <td>{{ $age->age_ID }}</td>
+        <td>{{ $age->age_Name }}</td>
+        <td>
+            <form action="{{ route('ages.delete', $age->age_ID) }}" method="post">
+                @csrf
+                <p>
+                    <input type="submit" value="削除">
+                </p>
+            </form>
+        </td>
+    </tr>
+    @endforeach
+</tbody>
+</table>
 
     <div>
         <a href="{{ route('home.index') }}">ホームへ戻る</a>

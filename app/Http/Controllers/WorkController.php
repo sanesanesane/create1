@@ -14,10 +14,10 @@ class WorkController extends Controller
 {
     public function create()
     {
-        $subjects = Subject::all();
-        $ages = Age::all();
+        $subjects = Subject::where('subject_Name', '!=', '削除済み')->get();
+        $ages = Age::where('age_Name', '!=', '削除済み')->get();
         $museums = Museum::all();
-        $countries = Country::all();
+        $countries = Country::where('country_Name', '!=', '削除済み')->get();
         return view('works.create', compact('subjects','ages','museums','countries'));
     }
 
@@ -32,10 +32,29 @@ class WorkController extends Controller
         $work->work_name = $request->input('work_name');
         $work->work_artist = $request->input('author_name'); 
         $work->work_description = $request->input('work_description'); 
+
+        $work_name = $request->input('work_name');
+        $work_name = trim($work_name);
+        $work_name = mb_convert_kana($work_name, 'ASKV', 'UTF-8');
+
+        if(mb_strlen($work_name, 'UTF-8') > 8)
+        {
+            return redirect()->route('works.create')->with('error',"最大入力文字は8文字までです。");
+        }
+
+        if (Age::where('age_Name', $age_name)->exists()) 
+        {
+            return redirect()->route('works.create')->with('error',"この年代は既に登録されています。");
+        }
+
+
+
+        
+        $work->work_name = $work_name;
         $work->save(); //保存
 
         // 保存後のリダイレクトや、保存成功メッセージの表示などを行います。
-        return redirect()->route('works.create')->with('success', '作品が登録されました');
+        return redirect()->route('works.index')->with('success', '作品が登録されました');
     }
 
     public function index(Request $request)
@@ -55,6 +74,7 @@ class WorkController extends Controller
             });
         }
         
+        $works= Work::where('work_name', '!=' ,'削除済み')->get();
         $works = $query->paginate(10);
         return view('works.index', compact('works'));
     }
@@ -87,4 +107,19 @@ class WorkController extends Controller
 
         return redirect()->route('works.index')->with('success', '作品が更新されました');
     }
+
+    public function delete(Request $request, $work_id)
+    {
+        $work = Work::where('work_id', $work_id)->first();
+
+        if($work)
+        {
+            $work->work_name = '削除済み';
+            $work->update();
+
+            return redirect()->route('works.index')->with('success', 'データを削除しました。');
+        }
+        return redirect()->route('works.index')->with('error', 'データが見つかりません。');
+    }
+    
 }

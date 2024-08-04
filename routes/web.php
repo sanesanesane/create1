@@ -66,19 +66,20 @@ Route::get('/title/menu',[DashboardController::class,'menu'])->name('dashboard.m
 Route::get('subjects/create',[SubjectController::class,'create'])->name('subjects.create');
 Route::post('subjects/store',[SubjectController::class,'store'])->name('subjects.store');
 Route::get('subjects/index',[SubjectController::class,'index'])->name('subjects.index');
+Route::post('subjects/{subject_ID}/delete',[SubjectController::class,'delete'])->name('subjects.delete');
 
 //〇地域関連のルート
 Route::get('countries/create',[CountryController::class,'create'])->name('countries.create');
 Route::post('countries/store',[CountryController::class,'store'])->name('countries.store');
 Route::get('countries/index',[CountryController::class,'index'])->name('countries.index');
-Route::delete('countries/delete',[CountryController::class,'delete'])->name('countries.delete');
-Route::get('countries/edit',[CountryController::class,'edit'])->name('countries.edit');
+Route::post('countries/{country_ID}/delete',[CountryController::class,'delete'])->name('countries.delete');
 
 //〇年代関連のルート
 Route::get('ages/create',[AgeController::class,'create'])->name('ages.create');
 Route::post('ages/store',[AgeController::class,'store'])->name('ages.store');
 Route::get('ages/index',[AgeController::class,'index'])->name('ages.index');
-Route::post('ages/{age_ID}/delete',[AgeController::class,'delete'])->name('ages.delete');
+Route::post('ages/{age_ID}/delete', [AgeController::class, 'delete'])->name('ages.delete');
+
 
 //〇本登録関連のルート
 Route::get('books/create',[BookController::class,'create'])->name('books.create');
@@ -101,3 +102,4 @@ Route::get('works/index',[WorkController::class,'index'])->name('works.index');
 Route::get('works/show/{work}', [WorkController::class, 'show'])->name('works.show');
 Route::get('works/{work}/edit', [WorkController::class, 'edit'])->name('works.edit');
 Route::patch('works/{work}', [WorkController::class, 'update'])->name('works.update');
+Route::post('works/{worl_id}/delete',[WorkController::class, 'delete'])->name('works.delete');

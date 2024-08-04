@@ -45,26 +45,25 @@ class AgeController extends Controller
         // 科目の一覧を表示
         public function index()
         {
-            $ages=Age::all();
+            $ages = Age::where('age_Name', '!=', '削除済み')->where('age_Name', '!=', '年代を選択してください。')->get();
+
             return view('ages.index',compact('ages'));
         }
 
-        public function delete(Request $request, Age $age_ID)
+        public function delete(Request $request, $age_ID)
         {
-            $age= Age::where('age_ID', $age_ID)->first();
+            $age = Age::where('age_ID', $age_ID)->first();
             
-            if($age)
-            {
+            if ($age) {
                 $age->age_Name = '削除済み';
                 $age->update();
-                
-
+        
                 return redirect()->route('ages.index')->with('success', 'データを削除しました。');
             }
             return redirect()->route('ages.index')->with('error', 'データが見つかりません。');
         }
+        
     
     }
     
-
 

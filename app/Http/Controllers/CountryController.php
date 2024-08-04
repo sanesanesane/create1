@@ -49,8 +49,23 @@ class CountryController extends Controller
     // 科目の一覧を表示
     public function index()
     {
-        $countries=Country::all();
+        $countries=Country::where('country_Name', '!=', '削除済み')->where('country_Name','!=','地域を選択してください。')->get();
+
         return view('countries.index',compact('countries'));
+    }
+
+    public function delete(Request $request, $country_ID)
+    {
+        $country = Country::where('country_ID', $country_ID)->first();
+        
+        if ($country) 
+        {
+            $country->country_Name = '削除済み';
+            $country->update();
+
+            return redirect()->route('countries.index')->with('success', 'データを削除しました。');
+        }
+        return redirect()->route('countries.index')->with('error', 'データが見つかりません。');
     }
 
 }

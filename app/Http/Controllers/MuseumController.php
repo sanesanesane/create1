@@ -20,7 +20,7 @@ class MuseumController extends Controller
             return view('museums.create');
         }
     
-        // 本をデータベースに保存
+        // 施設をデータベースに保存
         public function store(Request $request)
         {
             $museums = new Museum();

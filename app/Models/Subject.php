@@ -10,8 +10,12 @@ class Subject extends Model
 {
     use HasFactory;
 
-    protected $table = 'subjects';
     //テーブルの名前と関連。
+    protected $table = 'subjects';
+    protected $fillable = ['subject_ID', 'subject_Name'];
+    protected $primaryKey = 'subject_ID';
+    public $incrementing = true; // 主キーが自動増分されることを指定
+    protected $keyType = 'int'; // 主キーの型を指定
 
     public function books()
     {
