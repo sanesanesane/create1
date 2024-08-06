@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Book;
 use App\Models\Subject;
 use App\Models\Country;
+use App\Models\Museum;
 use App\MOdels\Age;
 use App\Models\Work;
 
@@ -19,7 +20,10 @@ class BookController extends Controller
         // 本の作成フォームを表示
     public function create()
     {
-
+        $subjects = Subject::where('subject_Name', '!=', '削除済み')->get();
+        $ages = Age::where('age_Name', '!=', '削除済み')->get();
+        $museums = Museum::all();
+        $countries = Country::where('country_Name', '!=', '削除済み')->get();
 
         return view('books.create', compact('subjects','countries','ages')); 
     }

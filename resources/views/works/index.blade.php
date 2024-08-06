@@ -62,7 +62,7 @@
                 <p>
                     <input type="submit" value="削除">
                 </p>
-            </form>
+                </form>
             </td>
         </tr>
 

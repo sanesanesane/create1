@@ -59,12 +59,12 @@ class WorkController extends Controller
 
     public function index(Request $request)
     {
-
-        $query = Work::with('subject');
-
+        $query = Work::with('subject')
+                     ->where('work_name', '!=', '削除済み');
+    
         $search = $request->input('search');
         $search = trim($search);
-
+    
         if ($search) {
             $query->where(function($q) use ($search)
              {
@@ -73,11 +73,11 @@ class WorkController extends Controller
                   ->orWhere('work_artist', 'LIKE', "%$search%");
             });
         }
-        
-        $works= Work::where('work_name', '!=' ,'削除済み')->get();
+    
         $works = $query->paginate(10);
         return view('works.index', compact('works'));
     }
+    
 
     public function show($work)
     {
