@@ -35,22 +35,21 @@ class WorkController extends Controller
 
         $work_name = $request->input('work_name');
         $work_name = trim($work_name);
-        $work_name = mb_convert_kana($work_name, 'ASKV', 'UTF-8');
+        $work_name = mb_convert_kana($work_name, 'ASKV', 'UTF-8');//全角に変換
 
         if(mb_strlen($work_name, 'UTF-8') > 8)
         {
             return redirect()->route('works.create')->with('error',"最大入力文字は8文字までです。");
         }
 
-        if (Age::where('age_Name', $age_name)->exists()) 
+        if (Work::where('work_name', $work_name)->exists()) 
         {
-            return redirect()->route('works.create')->with('error',"この年代は既に登録されています。");
+            return redirect()->route('works.create')->with('error',"この作品は既に登録されています。");
         }
-
-
 
         
         $work->work_name = $work_name;
+
         $work->save(); //保存
 
         // 保存後のリダイレクトや、保存成功メッセージの表示などを行います。

@@ -1,4 +1,34 @@
+<html>
+<head>
 <h1>〇作品登録</h1>
+</head>
+<body>
+
+        <!-- エラーメッセージの表示 -->
+        @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+    <!-- 成功メッセージの表示 -->
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    <!-- 一般的なエラーメッセージの表示 -->
+    @if (session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
+
 
 <form action="{{ route('works.store') }}" method="POST">
     @csrf <!-- LaravelのCSRF保護のため -->
@@ -21,6 +51,7 @@
     <div class="form-group">
         <label for="age-id">{{ __('年代') }}</label><br>
         <select class="form-control" id="age-id" name="age_id" style="width: 100px; height: 20px;">
+            <option value="" disabled selected>必ず選択してください</option>
             @foreach ($ages as $age)
                 <option value="{{ $age->age_ID }}">{{ $age->age_Name }}</option>
             @endforeach
@@ -30,6 +61,7 @@
     <div class="form-group">
         <label for="country-id">{{ __('地域') }}</label><br>
         <select class="form-control" id="country-id" name="country_id" style="width: 100px; height: 20px;">
+            <option value="" disabled selected>必ず選択してください</option>
             @foreach ($countries as $country)
                 <option value="{{ $country->country_ID }}">{{ $country->country_Name }}</option>
             @endforeach
@@ -39,6 +71,7 @@
     <div class="form-group">
         <label for="museum-id">{{ __('美術館') }}</label><br>
         <select class="form-control" id="museum-id" name="museum_id" style="width: 100px; height: 20px;">
+            <option value="" disabled selected>必ず選択してください</option>
             @foreach ($museums as $museum)
                 <option value="{{ $museum->museum_ID }}">{{ $museum->museum_Name }}</option>
             @endforeach
@@ -54,7 +87,8 @@
         <a href="{{ route('home.index') }}">ホームへ戻る</a>
     </div>
 </form>
-
+</body>
+</html>
 
 
   

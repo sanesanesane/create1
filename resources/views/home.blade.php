@@ -13,5 +13,7 @@
     <div>
         <a href="{{ route('museums.create')}}">美術館登録</a>
     </div>
+    <a href="{{ route('users.create')}}">テストユーザー登録</a>
+    <a href="{{ route('users.loginpage')}}">テストユーザーログイン</a>
 </body>
 </html>

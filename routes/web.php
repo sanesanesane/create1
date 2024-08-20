@@ -16,6 +16,7 @@ use App\Http\Controllers\Museumcontroller;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WorkController;
+use App\Http\Controllers\UserController;
 
 
 /*
@@ -54,11 +55,18 @@ Route::get('/test', function () {
 
 //以下ルート
 
+//〇認証機能関連
+Route::get('/users/create',[UserController::class,'create'])->name('users.create');
+Route::post('/users/register',[UserController::class,'register'])->name('users.register');
+Route::get('/users/loginpage',[UserController::class,'loginpage'])->name('users.loginpage');
+Route::post('/users/login',[UserController::class,'login'])->name('users.login');
+
 //〇追加要綱
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
 Route::get('/profile', [ProfileController::class, 'show'])->name('home.show');
-//〇タイトル画面についてのルート
 
+
+//〇タイトル画面についてのルート
 Route::get('/title/view',[DashboardController::class,'index'])->name('dashboard.title');
 Route::get('/title/menu',[DashboardController::class,'menu'])->name('dashboard.menu');
 
