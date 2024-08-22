@@ -20,7 +20,7 @@ class UserController extends Controller
         $user = new User();
         $user->name = $request->input('name');
         $user->email = $request->input('email');
-        $user->password = $request->input('password');
+        $user->password = bcrypt($request->password);
         $user->save();
 
         return redirect()->route('home.index'); // ダッシュボードやホームページにリダイレクト
@@ -35,13 +35,18 @@ class UserController extends Controller
         if(Auth::attempt(['email' => $email , 'password' => $password]))
         {
             Auth::user()->name;
+
+            return redirect()->route('home.index');
+
         }
         else
         {
-            $msg = 'ログインに失敗しました。';
+           
         }
     
     }
+
+
     
     public function loginpage ()
     {
@@ -49,6 +54,23 @@ class UserController extends Controller
 
     }
 
+    public function show()
+    {
+        $user = Auth::user();
+    
+        
+        return view('users.show', compact('user'));
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout(); 
+
+        $request->session()->invalidate(); 
+        $request->session()->regenerateToken(); 
+        
+        return redirect()->route('home.index');
+    }
     
 
 

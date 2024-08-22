@@ -60,6 +60,8 @@ Route::get('/users/create',[UserController::class,'create'])->name('users.create
 Route::post('/users/register',[UserController::class,'register'])->name('users.register');
 Route::get('/users/loginpage',[UserController::class,'loginpage'])->name('users.loginpage');
 Route::post('/users/login',[UserController::class,'login'])->name('users.login');
+Route::get('/users/show',[UserController::class,'show'])->name('users.show');
+Route::post('/users/logout',[UserController::class,'logout'])->name('users.logout');
 
 //〇追加要綱
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
