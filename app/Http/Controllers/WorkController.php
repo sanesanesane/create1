@@ -49,6 +49,7 @@ class WorkController extends Controller
 
         
         $work->work_name = $work_name;
+        $work->user_id = auth()->id();
 
         $work->save(); //保存
 
@@ -58,8 +59,11 @@ class WorkController extends Controller
 
     public function index(Request $request)
     {
+        $user_id = auth()->id(); 
+
         $query = Work::with('subject')
-                     ->where('work_name', '!=', '削除済み');
+                     ->where('work_name', '!=', '削除済み')
+                     ->where('user_id', $user_id);
     
         $search = $request->input('search');
         $search = trim($search);

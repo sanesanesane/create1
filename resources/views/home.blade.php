@@ -15,6 +15,6 @@
     </div>
     <a href="{{ route('users.create')}}">テストユーザー登録</a>
     <a href="{{ route('users.loginpage')}}">テストユーザーログイン</a>
-    <a href="{{ route('users.show')}}">テストユーザーログイン</a>
+    <a href="{{ route('users.show')}}">テストユーザーログアウト</a>
 </body>
 </html>

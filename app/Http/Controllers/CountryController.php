@@ -40,6 +40,7 @@ class CountryController extends Controller
 
 
         $country ->country_Name = $country_name;
+        $country->user_id = auth()->id();
         $country->save(); 
 
         return redirect()->route('countries.create')->with('success', '登録完了しました！'); 
@@ -49,7 +50,11 @@ class CountryController extends Controller
     // 科目の一覧を表示
     public function index()
     {
-        $countries=Country::where('country_Name', '!=', '削除済み')->where('country_Name','!=','地域を選択してください。')->get();
+        $user_id = auth()->id();
+        $countries=Country::where('user_id', $user_id)
+        ->where('country_Name', '!=', '削除済み')
+        ->where('country_Name','!=','地域を選択してください。')
+        ->get();
 
         return view('countries.index',compact('countries'));
     }

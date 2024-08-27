@@ -30,13 +30,16 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
+Route::get('/',function()
+{
+if(Auth::check())
+{
+    return redirect ('home.index');
+}
+else
+{
+    return view('users.title');
+}
 });
 
 Route::middleware([
@@ -62,9 +65,9 @@ Route::get('/users/loginpage',[UserController::class,'loginpage'])->name('users.
 Route::post('/users/login',[UserController::class,'login'])->name('users.login');
 Route::get('/users/show',[UserController::class,'show'])->name('users.show');
 Route::post('/users/logout',[UserController::class,'logout'])->name('users.logout');
-
+Route::get('/users/title',[UserController::class,'title'])->name('users.title');
 //〇追加要綱
-Route::get('/', [HomeController::class, 'index'])->name('home.index');
+Route::get('/home', [HomeController::class, 'index'])->name('home.index');
 Route::get('/profile', [ProfileController::class, 'show'])->name('home.show');
 
 

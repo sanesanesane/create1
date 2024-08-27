@@ -40,6 +40,7 @@ class SubjectController extends Controller
 
         //保存する
         $subject->subject_Name =$subject_name;
+        $subject->user_id = auth()->id();
         $subject->save(); //保存
 
         return redirect()->route('subjects.create')->with('success', '作品が登録されました');
@@ -48,7 +49,12 @@ class SubjectController extends Controller
     
     public function index()
     {
-        $subjects=Subject::where('subject_Name', '!=', '削除済み')->where('subject_Name', '!=', '科目を選択してください。')->get();
+        $user_id = auth()->id(); 
+        $subjects = Subject::where('user_id', $user_id)
+        ->where('subject_Name', '!=', '削除済み')
+        ->where('subject_Name', '!=', '科目を選択してください。')
+        ->get();
+    
         return view('subjects.index',compact('subjects'));
     }
 

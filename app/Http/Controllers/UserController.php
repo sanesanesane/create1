@@ -21,6 +21,7 @@ class UserController extends Controller
         $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->password = bcrypt($request->password);
+
         $user->save();
 
         return redirect()->route('home.index'); // ダッシュボードやホームページにリダイレクト
@@ -41,7 +42,7 @@ class UserController extends Controller
         }
         else
         {
-           
+            return back()->route('users.title');
         }
     
     }
@@ -72,6 +73,10 @@ class UserController extends Controller
         return redirect()->route('home.index');
     }
     
+    public function title()
+    {
+        return view('users.title');
+    }
 
 
 

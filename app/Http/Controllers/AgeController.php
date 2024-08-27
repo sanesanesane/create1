@@ -37,6 +37,7 @@ class AgeController extends Controller
             }
             
             $age->age_Name =$age_name;
+            $age->user_id = auth()->id();
             $age->save(); //保存
 
             return redirect()->route('ages.create')->with('success', '作品が登録されました');
@@ -45,7 +46,11 @@ class AgeController extends Controller
         // 科目の一覧を表示
         public function index()
         {
-            $ages = Age::where('age_Name', '!=', '削除済み')->where('age_Name', '!=', '年代を選択してください。')->get();
+            $user_id = auth()->id(); 
+            $ages = Age::where('user_id', $user_id)
+            ->where('age_Name', '!=', '削除済み')
+            ->where('age_Name', '!=', '年代を選択してください。')
+            ->get();
 
             return view('ages.index',compact('ages'));
         }
