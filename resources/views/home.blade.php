@@ -12,9 +12,10 @@
     <a href="{{ route('dashboard.title')}}">その他管理用一覧画面</a>
     <div>
         <a href="{{ route('museums.create')}}">美術館登録</a>
+        <a href="{{ route('museums.index')}}">美術館表示</a>
+        <a href="{{ route('museums.site')}}">美術館地図（テスト）</a>
     </div>
-    <a href="{{ route('users.create')}}">テストユーザー登録</a>
-    <a href="{{ route('users.loginpage')}}">テストユーザーログイン</a>
+
     <a href="{{ route('users.show')}}">テストユーザーログアウト</a>
 </body>
 </html>

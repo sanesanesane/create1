@@ -31,7 +31,7 @@
 
 
 <form action="{{ route('works.store') }}" method="POST">
-    @csrf <!-- LaravelのCSRF保護のため -->
+    @csrf
     
     <label>作品の名前</label><br>
     <input type="text" name="work_name" maxlength="15" value="" placeholder="作品の名前"><br>

@@ -66,6 +66,8 @@ Route::post('/users/login',[UserController::class,'login'])->name('users.login')
 Route::get('/users/show',[UserController::class,'show'])->name('users.show');
 Route::post('/users/logout',[UserController::class,'logout'])->name('users.logout');
 Route::get('/users/title',[UserController::class,'title'])->name('users.title');
+
+
 //〇追加要綱
 Route::get('/home', [HomeController::class, 'index'])->name('home.index');
 Route::get('/profile', [ProfileController::class, 'show'])->name('home.show');
@@ -105,8 +107,12 @@ Route::get('books/edit',[BookController::class,'edit'])->name('books.edit');
 Route::get('museums/create',[Museumcontroller::class,'create'])->name('museums.create');
 Route::post('museums/store',[Museumcontroller::class,'store'])->name('museums.store');
 Route::get('museums/index',[Museumcontroller::class,'index'])->name('museums.index');
+Route::get('museums/show/{museum}', [Museumcontroller::class, 'show'])->name('museums.show');
 Route::delete('museums/delete',[Museumcontroller::class,'delete'])->name('museums.delete');
 Route::get('museums/edit',[Museumcontroller::class,'edit'])->name('museums.edit');
+Route::get('museums/site',[Museumcontroller::class,'site'])->name('museums.site');
+Route::get('museums/map',[Museumcontroller::class,'map'])->name('museums.map');
+
 
 //〇作品登録関連のルート
 Route::get('works/create',[WorkController::class,'create'])->name('works.create');

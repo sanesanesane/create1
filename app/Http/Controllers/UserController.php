@@ -22,6 +22,12 @@ class UserController extends Controller
         $user->email = $request->input('email');
         $user->password = bcrypt($request->password);
 
+
+
+        if (preg_match('/[^\x01-\x7E]/', $user)) {
+            return back()->withErrors(['name' => '全角文字は使用できません。']);
+        }
+
         $user->save();
 
         return redirect()->route('home.index'); // ダッシュボードやホームページにリダイレクト
@@ -42,7 +48,8 @@ class UserController extends Controller
         }
         else
         {
-            return back()->route('users.title');
+            return redirect()->route('users.title');
+            //バックメソッドはルートとの併用不可。->は使えません。
         }
     
     }
