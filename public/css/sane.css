@@ -1,0 +1,164 @@
+/* 全体の設定 */
+body 
+{
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* コンテナ全体 */
+.container 
+{
+    background-color: white;
+    border: 2px solid #000;
+    padding: 20px;
+    width: 80%;
+    max-width: 800px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 見出し部分 */
+h1 
+{
+    text-align: left;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* 説明部分 */
+.description 
+{
+    border: 1px solid #000;
+    padding: 20px;
+    margin-bottom: 40px;
+}
+
+.description h2 
+{
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.description p 
+{
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* リンク(ボタン)部分 */
+.links 
+{
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.left-link, .right-link 
+{
+    text-align: center;
+    padding: 20px;
+    width: 45%;
+}
+
+.left-link p, .right-link p 
+{
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: blue;
+}
+
+/* リンク(ボタン)部分 */
+.button-link 
+{
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007BFF; /* ボタンの背景色 */
+    color: white; /* 文字色を白に */
+    text-align: center;
+    text-decoration: none; /* 下線を削除 */
+    border-radius: 5px; /* 角を丸く */
+    font-size: 16px; /* フォントサイズを調整 */
+    border: none; /* 枠線を削除 */
+}
+
+.button-link:hover {
+    background-color: #0056b3; /* ホバー時の色 */
+}
+
+.button-back {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #6c757d; /* グレー色の背景 */
+    color: white; /* 文字色を白に */
+    text-align: center;
+    text-decoration: none; /* 下線を削除 */
+    border-radius: 5px; /* 角を丸く */
+    font-size: 16px; /* フォントサイズを調整 */
+    border: none; /* 枠線を削除 */
+}
+
+.button-back:hover {
+    background-color: #5a6268; /* ホバー時の少し濃いグレー色 */
+}
+
+
+/* タイトル入力フォーム関連 */
+
+/* フォーム全体を中央寄せ */
+.form 
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 横方向に中央寄せ */
+    justify-content: center; /* 縦方向に中央寄せ（必要なら） */
+    margin-top: 20px; /* 上部のマージン */
+}
+
+/* ラベルとエラーメッセージのスタイリング */
+.form label, .form .error 
+{
+    font-size: 16px; /* ラベルのフォントサイズ */
+    margin-bottom: 10px;
+}
+
+
+.form input[type="text"] 
+{
+    width: 500px; /* 入力フィールドの横幅 */
+    padding: 10px; /* 入力フィールドの内側余白 */
+    font-size: 16px; /* 入力フィールドの文字サイズ */
+    border: 1px solid #ccc; /* 枠線 */
+    border-radius: 5px; /* 角丸 */
+}
+.form input[type="email"] 
+{
+    width: 500px; /* 入力フィールドの横幅 */
+    padding: 10px; /* 入力フィールドの内側余白 */
+    font-size: 16px; /* 入力フィールドの文字サイズ */
+    border: 1px solid #ccc; /* 枠線 */
+    border-radius: 5px; /* 角丸 */
+}
+.form input[type="password"] 
+{
+    width: 500px; /* 入力フィールドの横幅 */
+    padding: 10px; /* 入力フィールドの内側余白 */
+    font-size: 16px; /* 入力フィールドの文字サイズ */
+    border: 1px solid #ccc; /* 枠線 */
+    border-radius: 5px; /* 角丸 */
+}
+
+
+/* エラーメッセージのスタイリング */
+.form .error {
+    color: red; /* エラーメッセージの色 */
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+
+

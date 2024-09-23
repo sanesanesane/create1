@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Symfony\Component\Mime\Test\Constraint\EmailSubjectContains;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Response;
 
 //以下コントローラーを使用　
 use App\Http\Controllers\BookController;
@@ -56,7 +58,7 @@ Route::get('/test', function () {
     return view('test');
 });
 
-//以下ルート
+
 
 //〇認証機能関連
 Route::get('/users/create',[UserController::class,'create'])->name('users.create');

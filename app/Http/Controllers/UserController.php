@@ -1,5 +1,4 @@
 <?php
-//ユーザー認証機能の作成
 
 namespace App\Http\Controllers;
 
@@ -18,6 +17,7 @@ class UserController extends Controller
     public function register(Request $request)
     {
         $user = new User();
+        $user_email =$request->input('email');
         $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->password = bcrypt($request->password);
@@ -28,9 +28,16 @@ class UserController extends Controller
             return back()->withErrors(['name' => '全角文字は使用できません。']);
         }
 
+        if (User::where('email', $user_email)->exists()) 
+        {
+            return redirect()->route('users.title')->with('error',"こちらのユーザーは既に登録されています。");
+        }
+
+        $user->email = $user_email;
         $user->save();
 
-        return redirect()->route('home.index'); // ダッシュボードやホームページにリダイレクト
+        return redirect()->route('home.index');
+        // ダッシュボードやホームページにリダイレクト
     }
 
     //ユーザーログインのコード
@@ -48,14 +55,11 @@ class UserController extends Controller
         }
         else
         {
-            return redirect()->route('users.title');
+            return redirect()->route('users.title')->with('error',"ID又はパスワードが違います。");
             //バックメソッドはルートとの併用不可。->は使えません。
         }
     
     }
-
-
-    
     public function loginpage ()
     {
         return view('users.test');
@@ -85,10 +89,4 @@ class UserController extends Controller
         return view('users.title');
     }
 
-
-
 }
-
-
-
-
