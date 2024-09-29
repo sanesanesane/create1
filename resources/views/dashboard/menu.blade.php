@@ -1,16 +1,33 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>menu View</title>
+    <title>登録メニュー</title>
+    <link rel="stylesheet" href="{{ asset('css/sane.css') }}">
 </head>
+
 <body>
-    <h1>Title View</h1>
-    <a href="{{ route('subjects.create') }}">教科</a>
-    <a href="{{ route('countries.create') }}">地域</a>
-    <a href="{{ route('ages.create') }}">時</a>
-    <div>
-        <a href="{{ route('home.index') }}">ホームへ戻る</a>
-    </div>
+    <div class="container">
+        <div>
+            <h1>〇登録メニュー</h1>
+        </div>
+        <div class="description">
+            <div>
+                <a href="{{ route('subjects.create') }}"class="button-store-tag">科目の登録</a>
+            </div>
+            <div>
+                <a href="{{ route('countries.create') }}"class="button-store-tag">地域の登録
+                </a>
+            </div>
+            <div>
+                <a href="{{ route('ages.create') }}"class="button-store-tag">年代の登録</a>
+            </div>
+        </div>
+
+            <div>
+                <a href="{{ route('home.index') }}"class="button-back">ホームへ戻る</a>
+            </div>
 
 </body>
+
 </html>

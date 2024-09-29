@@ -16,7 +16,6 @@
             @csrf
             <div class="description">
                 <div class = "form">
-                    <div>
                         <label for="name">名前</label><br>
                         <input type="text" id="name" name="name" value="{{ old('name') }}" required>
                         @error('name')
