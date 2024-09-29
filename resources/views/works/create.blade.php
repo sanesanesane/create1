@@ -8,8 +8,7 @@
 <body>
     <div class="container">
         <div>
-            <h1>〇作品登録
-            </h1>
+            <h1>〇作品登録</h1>
         </div>
 
         <!-- エラーメッセージの表示 -->
@@ -108,5 +107,6 @@
                 </div>
             </div>
         </form>
+    </div>
 </body>
 </html>
