@@ -177,6 +177,20 @@ h1 {
     /* ホバー時の少し濃いグレー色 */
 }
 
+.button-search {
+    padding: 10px 20px;
+    background-color: #9acd32; /* ボタンの背景を黄緑色に設定 */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* ホバー時のスタイル */
+.button-search:hover {
+    background-color: #7fbf00; /* ホバー時のボタンの色を少し濃い黄緑色に変更 */
+}
 
 /* タイトル入力フォーム関連 */
 
@@ -239,6 +253,8 @@ h1 {
     border-radius: 5px;
     /* 角丸 */
 }
+
+
 
 
 /* エラーメッセージのスタイリング */
@@ -321,10 +337,124 @@ h1 {
 
 }
 
+
+
 /* エラーメッセージのスタイリング */
 .form-work .error {
     color: red;
     /* エラーメッセージの色 */
     font-size: 14px;
     margin-top: 5px;
+}
+
+.form-search {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #fff; /* 背景を白色に設定 */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form-search input[type="text"] {
+    width: 100%;
+    max-width: 500px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff; /* 入力フィールドの背景を白色に設定 */
+    margin-right: 10px;
+}
+
+
+
+
+
+.table-list {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+    
+}
+
+.table-list th, .table-list td {
+    border: 1px solid #000;
+    padding: 10px;
+    text-align: center;
+    height: 40px;
+}
+
+.table-list th {
+    background-color: #f4f4f4;
+    
+}
+
+
+.table-list th.number, .table-list td.number {
+    width: 15%; /* 年代列を大きくする */
+}
+
+.table-list th.name, .table-list td.name {
+    width: 70%; /* 編集列を小さくする */
+}
+
+.table-list th.edit, .table-list td.edit {
+    width: 15%; /* 削除列を小さくする */
+}
+
+.table-museum {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+}
+
+.table-museum th, .table-museum td {
+    border: 1px solid #000;
+    padding: 10px;
+    text-align: center;
+    height: 40px;
+}
+
+.table-museum th {
+    background-color: #f4f4f4;
+}
+
+/* 番号列: 幅を10%に設定 */
+.table-museum th.number, .table-museum td.number {
+    width: 10%;
+}
+
+/* 名前列: 幅を30%に設定 */
+.table-museum th.name, .table-museum td.name {
+    width: 30%;
+}
+
+/* 住所列: 幅を50%に設定 */
+.table-museum th.address, .table-museum td.address {
+    width: 50%;
+}
+
+/* 削除列: 幅を10%に設定 */
+.table-museum th.delete, .table-museum td.delete {
+    width: 10%;
+}
+
+
+
+
+.pagination {
+    text-align: right;
+}
+
+.pagination a {
+    margin: 0 5px;
+    padding: 5px 10px;
+    border: 1px solid #000;
+    text-decoration: none;
+}
+
+.pagination a:hover {
+    background-color: #f4f4f4;
 }

@@ -42,14 +42,34 @@ class MuseumController extends Controller
             $museums -> museum_API =$museums_API;
             $museums -> museum_Content =$request->input('museum_content');
 
+            $museums->user_id = auth()->id();
+
             $museums->save();
             
             return redirect()->route('museums.index');
         }
     
-            public function index()
+            public function index(Request $request)
 {
-    $museums = Museum::all(); 
+    $user_id = auth()->id(); 
+
+    $query = Museum::where('museum_Name', '!=', '削除済み')
+    ->where('user_id', $user_id);
+
+
+    $search = $request->input('search');
+    $search = trim($search);
+
+    if ($search) {
+        $query->where(function($q) use ($search)
+         {
+            // 内部クエリを作成
+            $q->where('museum_API', 'LIKE', "%$search%");
+        });
+    }
+
+    $museums = $query->paginate(10);
+
     return view('museums.index', compact('museums'));
 }
 

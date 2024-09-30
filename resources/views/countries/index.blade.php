@@ -1,60 +1,67 @@
+<!DOCTYPE html>
 <html>
-    <head>
-        <title>地域一覧</title>
-    </head>
-    <body>
-    <h1>〇地域</h1>
+<head>
+    <title>地域一覧</title>
+    <link rel="stylesheet" href="{{ asset('css/sane.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <div>
+            <h1>〇地域</h1>
+        </div>
         <!-- エラーメッセージの表示 -->
         @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+        <!-- 成功メッセージの表示 -->
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        <!-- 一般的なエラーメッセージの表示 -->
+        @if (session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
+        <table class="table-list">
+            <thead>
+                <tr>
+                    <th class="number">番号</th>
+                    <th class="name">名前</th>
+                    <th class="edit">詳細</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($countries as $country)
+                    <tr>
+                        <td class="number">{{ $country->country_ID }}</td>
+                        <td class="name">{{ $country->country_Name }}</td>
+                        <td class="edit">
+                            <form action="{{ route('countries.delete', $country->country_ID) }}" method="post">
+                                @csrf
+                                <p>
+                                    <input type="submit" value="詳細">
+                                </p>
+                            </form>
+                        </td>
+                    </tr>
                 @endforeach
-            </ul>
+            </tbody>
+        </table>
+        <div class="right-link">
+            <a href="{{ route('dashboard.title') }}" class="button-back">戻る</a>
         </div>
-    @endif
-
-    <!-- 成功メッセージの表示 -->
-    @if (session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
-
-    <!-- 一般的なエラーメッセージの表示 -->
-    @if (session('error'))
-        <div class="alert alert-danger">
-            {{ session('error') }}
-        </div>
-    @endif
-<table>
-    <thead>
-        <tr>
-            <th>番号</th>
-            <th>名前</th>
-            <th>編集</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach ($countries as $country)
-        <tr>
-            <td>{{ $country->country_ID }}</td>
-            <td>{{ $country->country_Name }}</td>
-            <td>
-                <form action="{{ route('countries.delete', $country->country_ID) }}" method="post">
-                    @csrf
-                    <p>
-                        <input type="submit" value="削除">
-                    </p>
-                </form>
-            </td>
-        </tr>
-        @endforeach
-    </tbody>
-</table>
-<div>
-    <a href="{{ route('home.index') }}">ホームへ戻る</a>
-</div>
-    </body>
+    </div>
+</body>
 </html>
