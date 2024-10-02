@@ -192,6 +192,24 @@ h1 {
     background-color: #7fbf00; /* ホバー時のボタンの色を少し濃い黄緑色に変更 */
 }
 
+.button-delete {
+    display: inline-block;
+    padding: 10px 20px; /* 内側の余白を設定 */
+    text-align: center; /* テキストを中央に配置 */
+    font-size: 16px; /* 文字サイズを統一 */
+    color: #fff; /* 文字色を白に */
+    background-color: #FF0000; /* ボタンの背景色を赤に設定 */
+    border: none; /* 枠線を消す */
+    border-radius: 5px; /* 角を丸くする */
+    margin: 10px 0; /* 縦方向にマージンを追加 */
+    text-decoration: none; /* リンクの下線を消す */
+}
+
+.button-delete:hover {
+    background-color: #CC0000; /* ホバー時の色（少し濃い赤） */
+}
+
+
 /* タイトル入力フォーム関連 */
 
 /* フォーム全体を中央寄せ */
@@ -352,6 +370,7 @@ h1 {
     align-items: center;
     justify-content: space-between;
     padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     background-color: #fff; /* 背景を白色に設定 */
     width: 100%;
     box-sizing: border-box;
@@ -438,6 +457,48 @@ h1 {
 
 /* 削除列: 幅を10%に設定 */
 .table-museum th.delete, .table-museum td.delete {
+    width: 10%;
+}
+
+.table-works {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+}
+
+.table-works th, .table-works td {
+    border: 1px solid #000;
+    padding: 10px;
+    text-align: center;
+    height: 40px;
+}
+
+.table-works th {
+    background-color: #f4f4f4;
+}
+
+/* 番号列: 幅を10%に設定 */
+.table-works th.number, .table-works td.number {
+    width: 10%;
+}
+
+/* 名前列: 幅を30%に設定 */
+.table-works th.name, .table-works td.name {
+    width: 30%;
+}
+
+/* 科目列: 幅を25%に設定 */
+.table-works th.subject, .table-works td.subject {
+    width: 25%;
+}
+
+/* 著者列: 幅を25%に設定 */
+.table-works th.artist, .table-works td.artist {
+    width: 25%;
+}
+
+/* 削除列: 幅を10%に設定 */
+.table-works th.delete, .table-works td.delete {
     width: 10%;
 }
 

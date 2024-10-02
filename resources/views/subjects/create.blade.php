@@ -17,7 +17,7 @@
             <div class="description">
                 <div class = "form-work">
                     <label>・科目</label><br>
-                    <input type="text" name="age_name" maxlength="15" value="" placeholder="科目名"><br>
+                    <input type="text" name="subject_name" maxlength="15" value="" placeholder="科目名"><br>
                 </div>
             </div>
             <div class="links">
