@@ -84,6 +84,8 @@ Route::get('subjects/create',[SubjectController::class,'create'])->name('subject
 Route::post('subjects/store',[SubjectController::class,'store'])->name('subjects.store');
 Route::get('subjects/index',[SubjectController::class,'index'])->name('subjects.index');
 Route::post('subjects/{subject_ID}/delete',[SubjectController::class,'delete'])->name('subjects.delete');
+Route::get('subjects/{subject}/edit',[SubjectController::class,'edit'])->name('subjects.edit');
+Route::patch('subjects/{subject}/',[SubjectController::class,'edit'])->name('subjects.update');
 
 //〇地域関連のルート
 Route::get('countries/create',[CountryController::class,'create'])->name('countries.create');

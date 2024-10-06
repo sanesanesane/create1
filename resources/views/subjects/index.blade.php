@@ -43,6 +43,7 @@
                     <th class="number">番号</th>
                     <th class="name">名前</th>
                     <th class="edit">詳細</th>
+                    <th class="delete">削除</th>
                 </tr>
             </thead>
 
@@ -52,10 +53,13 @@
                         <td class="number">{{ $subject->subject_ID }}</td>
                         <td class="name">{{ $subject->subject_Name }}</td>
                         <td class="edit">
+                            <a href="{{ route('subjects.edit', $subject->subject_ID) }}" class="button-store">詳細</a>
+
+                        <td class="delete">
                             <form action="{{ route('subjects.delete', $subject->subject_ID) }}" method="post">
                                 @csrf
                                 <p>
-                                    <input type="submit" value="詳細">
+                                    <input type="submit" value="削除" class="button-delete ">
                                 </p>
                             </form>
                         </td>

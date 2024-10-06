@@ -1,21 +1,24 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>プロフィール</title>
+    <link rel="stylesheet" href="{{ asset('css/sane.css') }}">
 </head>
+
 <body>
-    <h1>プロフィールページ</h1>
+    <div class="container">
+        <h1>プロフィールページ</h1>
 
-    <p>名前: {{ $user->name }}</p>
-    <p>メールアドレス: {{ $user->email }}</p>
+        <p>名前: {{ $user->name }}</p>
+        <p>メールアドレス: {{ $user->email }}</p>
 
-    <form method="POST" action="{{ route('logout') }}">
-        @csrf
-        <button type="submit">ログアウト</button>
-    </form>
+        <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            <button type="submit" class="button-delete ">ログアウト</button>
+        </form>
 
-   
+    </div>
 </body>
+
 </html>

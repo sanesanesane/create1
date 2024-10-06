@@ -416,10 +416,14 @@ h1 {
 }
 
 .table-list th.name, .table-list td.name {
-    width: 70%; /* 編集列を小さくする */
+    width: 55%; /* 編集列を小さくする */
 }
 
 .table-list th.edit, .table-list td.edit {
+    width: 15%; /* 削除列を小さくする */
+}
+
+.table-list th.delete, .table-list td.delete {
     width: 15%; /* 削除列を小さくする */
 }
 
