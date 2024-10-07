@@ -80,8 +80,9 @@
 
 <body>
     <div class="container">
-        <div>
+        <div class="header-row">
             <h1>〇施設詳細</h1>
+            <a href="{{ route('museums.edit',['museum' => $museum->museum_ID ]) }}" class="button-store">編集する</a>
         </div>
         <div>
             <p>

@@ -108,4 +108,5 @@ class MuseumController extends Controller
     return view('museums.site', compact('site'));//変数を指定。
 }
 
+
 }

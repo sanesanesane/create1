@@ -507,6 +507,13 @@ h1 {
 }
 
 
+.header-row {
+    display: flex;
+    justify-content: space-between; /* 左右に要素を配置 */
+    align-items: center; /* 縦方向を揃える */
+    margin-bottom: 20px;
+}
+
 
 
 .pagination {

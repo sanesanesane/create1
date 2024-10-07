@@ -113,7 +113,7 @@ Route::post('museums/store',[Museumcontroller::class,'store'])->name('museums.st
 Route::get('museums/index',[Museumcontroller::class,'index'])->name('museums.index');
 Route::get('museums/show/{museum}', [Museumcontroller::class, 'show'])->name('museums.show');
 Route::delete('museums/delete',[Museumcontroller::class,'delete'])->name('museums.delete');
-Route::get('museums/edit',[Museumcontroller::class,'edit'])->name('museums.edit');
+Route::get('museums/{museum}/edit',[Museumcontroller::class,'edit'])->name('museums.edit');
 Route::get('museums/site',[Museumcontroller::class,'site'])->name('museums.site');
 Route::get('museums/map',[Museumcontroller::class,'map'])->name('museums.map');
 

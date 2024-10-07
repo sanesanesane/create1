@@ -16,12 +16,14 @@
             @csrf
             <div class="description">
                 <div class = "form">
+                    <div>
                         <label for="name">名前</label><br>
                         <input type="text" id="name" name="name" value="{{ old('name') }}" required>
                         @error('name')
                             <div>{{ $message }}</div>
                         @enderror
                     </div>
+
                     <div>
                         <label for="email">メールアドレス</label><br>
                         <input type="email" id="email" name="email" value="{{ old('email') }}" required>
@@ -44,15 +46,14 @@
                         <p>※ユーザー名は全角、パスワードは半角英数字で入力してください。</p>
                     </div>
                 </div>
-            </div>
-            <div class="links">
-                <div class="left-link">
-                    <button class="button-link">登録</button>
+                <div class="links">
+                    <div class="left-link">
+                        <button class="button-link">登録</button>
+                    </div>
+                    <div class="right-link">
+                        <input type="button" class="button-back" value="戻る" onclick= "history.back()">
+                    </div>
                 </div>
-                <div class="right-link">
-                    <input type="button" class="button-back" value="戻る" onclick= "history.back()">
-                </div>
-            </div>
         </form>
     </div>
 
