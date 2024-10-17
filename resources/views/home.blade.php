@@ -33,20 +33,18 @@
             <div class="description">
                 <h3>〇一覧メニュー</h3>
                 <div class="title">
-                    <a href="{{ route('works.index') }}" class="button-link">作品一覧</a>
+                    <a href="{{ route('works.index') }}" class="button-link">作品一覧　</a>
                     <p>読んだ本や鑑賞した作品を確認できます。</p>
                 </div>
                 <div class="title">
-                    <a href="{{ route('dashboard.title') }}"class="button-link">タグ一覧</a>
+                    <a href="{{ route('dashboard.title') }}"class="button-link">タグ一覧　</a>
                     <p>登録したタグを確認できます。</p>
                 </div>
                 <div class="title">
                     <a href="{{ route('museums.index') }}"class="button-link">美術館一覧</a>
                     <p>登録した施設を確認できます。</p>
                 </div>
-                <div>
-                    <a href="{{ route('museums.site') }}"class="button-link">美術館地図（テスト）</a>
-                </div>
+
             </div>
 </body>
 

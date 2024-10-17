@@ -89,4 +89,48 @@ class UserController extends Controller
         return view('users.title');
     }
 
+    public function edit(User $user)
+    {
+        return view ('users.edit' , compact('user'));
+    
+    }
+
+    public function editpass(User $user)
+    {
+        return view ('users.editpass' , compact('user'));
+    
+    }
+
+    public function update(Request $request, User $user)
+    {
+        $user_email =$request->input('email');
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+
+        
+        if (preg_match('/[^\x01-\x7E]/', $user)) {
+            return back()->withErrors(['name' => '全角文字は使用できません。']);
+        }
+
+        if (User::where('email', $user_email)->exists()) 
+        {
+            return redirect()->route('users.title')->with('error',"こちらのユーザーは既に登録されています。");
+        }
+
+        $user->email = $user_email;
+        $user->update();
+
+        return redirect()->route('home.index');
+        // ダッシュボードやホームページにリダイレクト
+    
+    }
+
+    public function updatepass(Request $request, User $user)
+    {
+        $user->password = bcrypt($request->password);
+        $user->update();
+
+        return redirect()->route('home.index');
+    }
+
 }

@@ -530,3 +530,37 @@ h1 {
 .pagination a:hover {
     background-color: #f4f4f4;
 }
+
+.user-details-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px; /* 余白を追加 */
+}
+
+.edit-button {
+    background-color: #c2f0c2;
+    color: black;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.info-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px; /* 余白を追加 */
+}
+
+.edit-pass-button {
+    background-color: #f0c2c2;
+    color: black;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.edit-pass-button:hover, .edit-button:hover {
+    background-color: #e0a0a0;
+}
