@@ -68,6 +68,26 @@ class AgeController extends Controller
             return redirect()->route('ages.index')->with('error', 'データが見つかりません。');
         }
         
+        public function edit(Age $age)
+        {
+            return view ('ages.edit' , compact('age'));
+        
+        }
+        
+        public function update(Request $request,Age $age)
+        {
+
+            $age_name =$request->input('age_name');
+            $age->age_Name =$age_name;
+            $age_name = trim($age_name);
+            $age_name = mb_convert_kana($age_name, 'ASKV', 'UTF-8');
+    
+            $age->save();
+    
+            return redirect()->route('ages.index')->with('success', '作品が更新されました');
+    
+    
+        }
     
     }
     

@@ -80,12 +80,13 @@ class SubjectController extends Controller
     
     public function update(Request $request,Subject $subject)
     {
+        //require_once("q.php");
+        //Log_CsvTxt_Wrt("abc");
         $subject_name =$request->input('subject_name');
         $subject->subject_Name =$subject_name;
         $subject_name = trim($subject_name);
         $subject_name = mb_convert_kana($subject_name, 'ASKV', 'UTF-8');
 
-        $subject->subject_Name =$subject_name;
         $subject->save();
 
         return redirect()->route('subjects.index')->with('success', '作品が更新されました');

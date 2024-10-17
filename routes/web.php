@@ -85,19 +85,25 @@ Route::post('subjects/store',[SubjectController::class,'store'])->name('subjects
 Route::get('subjects/index',[SubjectController::class,'index'])->name('subjects.index');
 Route::post('subjects/{subject_ID}/delete',[SubjectController::class,'delete'])->name('subjects.delete');
 Route::get('subjects/{subject}/edit',[SubjectController::class,'edit'])->name('subjects.edit');
-Route::patch('subjects/{subject}/',[SubjectController::class,'edit'])->name('subjects.update');
+Route::patch('subjects/{subject}/',[SubjectController::class,'update'])->name('subjects.update');
+
 
 //〇地域関連のルート
 Route::get('countries/create',[CountryController::class,'create'])->name('countries.create');
 Route::post('countries/store',[CountryController::class,'store'])->name('countries.store');
 Route::get('countries/index',[CountryController::class,'index'])->name('countries.index');
 Route::post('countries/{country_ID}/delete',[CountryController::class,'delete'])->name('countries.delete');
+Route::get('countries/{country}/edit',[CountryController::class,'edit'])->name('countries.edit');
+Route::patch('countries/{country}/',[CountryController::class,'update'])->name('countries.update');
+
 
 //〇年代関連のルート
 Route::get('ages/create',[AgeController::class,'create'])->name('ages.create');
 Route::post('ages/store',[AgeController::class,'store'])->name('ages.store');
 Route::get('ages/index',[AgeController::class,'index'])->name('ages.index');
 Route::post('ages/{age_ID}/delete', [AgeController::class, 'delete'])->name('ages.delete');
+Route::get('ages/{age}/edit',[AgeController::class,'edit'])->name('ages.edit');
+Route::patch('ages/{age}/',[AgeController::class,'update'])->name('ages.update');
 
 
 //〇本登録関連のルート

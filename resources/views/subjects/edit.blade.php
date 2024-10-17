@@ -14,6 +14,7 @@
         <form action="{{ route('subjects.update', $subject) }}" method="POST">
             @csrf
             @method('patch')
+            
             <!-- 他のフォームフィールド -->
             <div class="description">
                 <div class = "form-work">
@@ -23,7 +24,7 @@
             </div>
             <div class="links">
                 <div class="left-link">
-                    <input type="submit" class="button-store"></button>
+                    <input type="submit" class="button-store">
                 </div>
                 <div class="right-link">
                     <a href="{{ route('subjects.index') }}"class="button-back">一覧へ戻る</a>

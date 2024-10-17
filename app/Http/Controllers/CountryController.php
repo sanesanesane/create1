@@ -73,6 +73,26 @@ class CountryController extends Controller
         return redirect()->route('countries.index')->with('error', 'データが見つかりません。');
     }
 
+    public function edit(Country $country)
+    {
+        return view ('countries.edit' , compact('country'));
+    
+    }
+
+    public function update(Request $request,Country $country)
+    {
+
+        $country_name =$request->input('country_name');
+        $country->country_Name =$country_name;
+        $country_name = trim($country_name);
+        $country_name = mb_convert_kana($country_name, 'ASKV', 'UTF-8');
+
+        $country->save();
+
+        return redirect()->route('countries.index')->with('success', '作品が更新されました');
+
+
+    }
 }
 
 

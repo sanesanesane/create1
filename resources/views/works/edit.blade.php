@@ -22,6 +22,7 @@
                     <input type="text" name="work_name" maxlength="15"
                         value="{{ old('work_name', $work->work_name) }}"><br>
                 </div>
+                
                 <div class = "form-work">
                     <label>作者名</label><br>
                     <input type="text" name="author_name" maxlength="15"

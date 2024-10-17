@@ -40,6 +40,7 @@
                     <th class="number">番号</th>
                     <th class="name">名前</th>
                     <th class="edit">詳細</th>
+                    <th class="delete">削除</th>
                 </tr>
             </thead>
             <tbody>
@@ -48,10 +49,13 @@
                         <td class="number">{{ $country->country_ID }}</td>
                         <td class="name">{{ $country->country_Name }}</td>
                         <td class="edit">
+                                <a href="{{ route('countries.edit', $country->country_ID) }}" class="button-store">詳細</a>
+
+                        <td class="delete">
                             <form action="{{ route('countries.delete', $country->country_ID) }}" method="post">
                                 @csrf
                                 <p>
-                                    <input type="submit" value="詳細">
+                                    <input type="submit" value="詳細" class="button-delete ">
                                 </p>
                             </form>
                         </td>
