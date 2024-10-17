@@ -93,7 +93,7 @@
 
                 <div class="form-work">
                     <label>・作品説明</label><br>
-                    <textarea name="work_description" cols="60" rows="5"></textarea><br>
+                    <textarea name="work_description" cols="60" rows="7"></textarea><br>
                 </div>
 
 

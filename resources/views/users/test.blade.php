@@ -37,7 +37,7 @@
                     <button class="button-link">ログイン</button>
                 </div>
                 <div class="right-link">
-                    <input type="button" class="button-back" value="戻る" onclick= "history.back()">
+                    <input type="button" class="button-back" value="戻　る" onclick= "history.back()">
                 </div>
             </div>
         </form>

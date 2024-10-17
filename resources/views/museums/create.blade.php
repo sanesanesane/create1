@@ -20,19 +20,19 @@
                     <input type='text' name="museum_name" value="" placeholder="施設名"><br>
                 </div>
                 <div class = "form-work">
-                    <label>・美術館内容</label><br>
-                    <input type='text' name="museum_content" value="" placeholder="概要"><br>
-                </div>
-                <div class = "form-work">
                     <label>・所在地</label><br>
                     <input type="text" name="museum_api" maxlength="40" value="" placeholder="住所"><br>
+                </div>
+                <div class = "form-work">
+                    <label>・美術館内容</label><br>
+                    <textarea name="museum_content"cols="60" rows="7" placeholder="概要"></textarea><br>
                 </div>
                 <div class="links">
                     <div class="left-link">
                         <button class="button-store">登録</button>
                     </div>
                     <div class="right-link">
-                        <a href="{{ route('home.index') }}"class="button-back">ホームへ戻る</a>
+                        <a href="{{ route('home.index') }}"class="button-back">戻る</a>
                     </div>
                 </div>
             </div>

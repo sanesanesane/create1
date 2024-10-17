@@ -45,7 +45,7 @@
         <div class="links">
             <div class="left-link">
                 <p>※初めての方はこちら</p>
-                <a href="{{ route('users.create') }}" class="button-link">登録</a>
+                <a href="{{ route('users.create') }}" class="button-link">登　録　</a>
             </div>
 
             <div class="right-link">

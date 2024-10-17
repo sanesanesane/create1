@@ -328,7 +328,7 @@ h1 {
 }
 
 .form-work select {
-    width: 300px;
+    width: 450px;
     /* 入力フィールドの横幅 */
     padding: 5px;
     /* 入力フィールドの内側余白 */
@@ -342,7 +342,7 @@ h1 {
 }
 
 .form-work textarea {
-    width: 600px;
+    width: 500px;
     /* 入力フィールドの横幅 */
     padding: 5px;
     /* 入力フィールドの内側余白 */
