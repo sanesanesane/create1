@@ -10,7 +10,7 @@
     <div class="container">
         <div class="user-details-header">
             <h1>ユーザー詳細</h1>
-            <a href="{{ route('users.edit') }}" class="edit-button">編集する</a>
+            <a href="{{ route('users.edit',$user) }}" class="edit-button">編集する</a>
         </div>
 
         <p>名前: {{ $user->name }}</p>
@@ -23,7 +23,7 @@
 
         <div class="info-section">
             <p>※ユーザー名は全角、パスワードは半角英数字で入力してください。</p>
-            <a href="{{ route('users.editpass') }}" class="edit-pass-button">パスワードを編集する</a>
+            <a href="{{ route('users.editpass',$user) }}" class="edit-pass-button">パスワードを編集する</a>
         </div>
 
         <a href="{{ route('home.index') }}">ホームへ戻る</a>

@@ -39,9 +39,11 @@
                         @enderror
                     </div>
                     <div>
-                        <label for="password_confirmation">パスワード確認</label><br>
-                        <input type="password" id="password_confirmation" name="password_confirmation" required>
-                    </div>
+                    <label for="password_confirmation">パスワード確認</label><br>
+                    <input type="password" id="password_confirmation" name="password_confirmation" required>
+
+                    </div>                        
+
                     <div>
                         <p>※ユーザー名は全角、パスワードは半角英数字で入力してください。</p>
                     </div>

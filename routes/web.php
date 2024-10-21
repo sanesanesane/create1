@@ -68,10 +68,10 @@ Route::post('/users/login',[UserController::class,'login'])->name('users.login')
 Route::get('/users/show',[UserController::class,'show'])->name('users.show');
 Route::post('/users/logout',[UserController::class,'logout'])->name('users.logout');
 Route::get('/users/title',[UserController::class,'title'])->name('users.title');
-Route::get('/users/edit',[UserController::class,'edit'])->name('users.edit');
-Route::get('/users/editpass',[UserController::class,'editpass'])->name('users.editpass');
-Route::patch('/users/update',[UserController::class,'update'])->name('users.update');
-Route::patch('/users/updatepass',[UserController::class,'update'])->name('users.updatepass');
+Route::get('/users/{user}/edit',[UserController::class,'edit'])->name('users.edit');
+Route::get('/users/{user}/editpass',[UserController::class,'editpass'])->name('users.editpass');
+Route::patch('/users/{user}/update',[UserController::class,'update'])->name('users.update');
+Route::patch('/users/{user}/updatepass',[UserController::class,'updatepass'])->name('users.updatepass');
 
 //〇追加要綱
 Route::get('/home', [HomeController::class, 'index'])->name('home.index');

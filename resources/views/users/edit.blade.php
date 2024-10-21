@@ -11,7 +11,7 @@
         <div>
             <h1>〇ユーザー編集</h1>
         </div>
-        <form action="{{ route('users.update') }}" method="POST">
+        <form action="{{ route('users.update',$user) }}" method="POST">
             @csrf
             @method('patch')
             
@@ -20,11 +20,11 @@
                 <div class = "form">
                     <div>
                     <label>・ユーザー名</label><br>
-                    <input type="text" name="user_name" maxlength="15" value="{{old("user_name" , $user->name) }}" ><br>
+                    <input type="text" name="name" maxlength="15" value="{{old("user_name" , $user->name) }}" ><br>
                 </div>
                 <div>
                 <label>・メールアドレス</label><br>
-                <input type="text" name="e-mail" maxlength="15" value="{{old("e-mail" , $user->email) }}" ><br>
+                <input type="email" name="email"  value="{{old("e-mail" , $user->email) }}" ><br>
                 </div>
             </div>
 

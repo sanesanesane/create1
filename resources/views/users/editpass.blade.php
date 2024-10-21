@@ -11,7 +11,7 @@
         <div>
             <h1>〇パスワード変更</h1>
         </div>
-        <form action="{{ route('users.update') }}" method="POST">
+        <form action="{{ route('users.updatepass'),$user }}" method="POST">
             @csrf
             @method('patch')
 
@@ -19,14 +19,18 @@
             <div class="description">
                 <div class = "form">
                     <div>
-                        <label>・新しいパスワード</label><br>
-                        <input type="text" name="password" maxlength="15"
-                            value="{{ old('password', $user->password) }}"><br>
+                        <label for="password">・新しいパスワード</label><br>
+                        <input type="password" id="password" name="password" ><br>
+                        @error('password')
+                        <div>{{ $message }}</div>
+                    @enderror
                     </div>
                     <div>
-                        <label>・新しいパスワード</label><br>
-                        <input type="text" name="password" maxlength="15"
-                            value="{{ old('password', $user->password) }}"><br>
+                        <label for="password_confirmation">パスワード確認</label><br>
+                        <input type="password" id="password_confirmation" name="password_confirmation" required>
+                    </div>
+                    <div>
+                        <p>※ユーザー名は全角、パスワードは半角英数字で入力してください。</p>
                     </div>
                 </div>
 

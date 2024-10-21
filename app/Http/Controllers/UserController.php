@@ -112,10 +112,6 @@ class UserController extends Controller
             return back()->withErrors(['name' => '全角文字は使用できません。']);
         }
 
-        if (User::where('email', $user_email)->exists()) 
-        {
-            return redirect()->route('users.title')->with('error',"こちらのユーザーは既に登録されています。");
-        }
 
         $user->email = $user_email;
         $user->update();
