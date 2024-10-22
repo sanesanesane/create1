@@ -8,21 +8,29 @@
 
 <body>
     <div class="container">
+        <div class="description">
         <div class="user-details-header">
-            <h1>ユーザー詳細</h1>
+            <h1>〇ユーザー詳細</h1>
             <a href="{{ route('users.edit',$user) }}" class="edit-button">編集する</a>
         </div>
 
-        <p>名前: {{ $user->name }}</p>
-        <p>メールアドレス: {{ $user->email }}</p>
+        <p>ユーザー名<br>
+             ・{{ $user->name }}</p>
+        <p>メールアドレス<br>
+             ・{{ $user->email }}</p>
+    </div>
 
+    <div> 
         <form method="POST" action="{{ route('logout') }}">
             @csrf
-            <button type="submit" class="button-delete ">ログアウト</button>
+            <button type="submit" style="background: none; border: none; color: red; text-decoration: underline; cursor: pointer;">
+                ログアウトをする
+            </button>
         </form>
-
+    </div>
+    
         <div class="info-section">
-            <p>※ユーザー名は全角、パスワードは半角英数字で入力してください。</p>
+            <p>※パスワードを忘れてしまった場合はこちら。</p>
             <a href="{{ route('users.editpass',$user) }}" class="edit-pass-button">パスワードを編集する</a>
         </div>
 

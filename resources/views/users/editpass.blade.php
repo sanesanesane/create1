@@ -11,7 +11,7 @@
         <div>
             <h1>〇パスワード変更</h1>
         </div>
-        <form action="{{ route('users.updatepass'),$user }}" method="POST">
+        <form action="{{ route('users.updatepass',$user) }}" method="POST">
             @csrf
             @method('patch')
 
