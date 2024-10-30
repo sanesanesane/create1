@@ -8,19 +8,20 @@ use App\Models\User;
 
 class UserController extends Controller
 {
-    //ユーザー登録のコード
+    //ユーザー登録ページに遷移
     public function create()
     {
         return view('users.create');
     }
 
+    //ユーザー登録コード
     public function register(Request $request)
     {
-        $user = new User();
-        $user_email =$request->input('email');
-        $user->name = $request->input('name');
-        $user->email = $request->input('email');
-        $user->password = bcrypt($request->password);
+        $user = new User();//新しいユーザーを作成
+        $user_email =$request->input('email');//e-mailの入力（同じユーザーをはじく用）
+        $user->name = $request->input('name');//名前の入力
+        $user->email = $request->input('email');//e-mailの入力
+        $user->password = bcrypt($request->password);//パスワードの入力
 
 
 
