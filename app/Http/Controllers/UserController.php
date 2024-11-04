@@ -20,21 +20,52 @@ class UserController extends Controller
         $user = new User();//新しいユーザーを作成
         $user_email =$request->input('email');//e-mailの入力（同じユーザーをはじく用）
         $user->name = $request->input('name');//名前の入力
+        $password = $request->input('password');
+        $password_confirmation = $request->input('password_confirmation');
         $user->email = $request->input('email');//e-mailの入力
-        $user->password = bcrypt($request->password);//パスワードの入力
 
 
+        if (preg_match('/[^\x{3000}-\x{FF9F}]/u', $user->name)) 
+        {
+            return back()->withErrors(['name' => '全角文字のみ使用してください。']);
+        }
 
-        if (preg_match('/[^\x01-\x7E]/', $user)) {
-            return back()->withErrors(['name' => '全角文字は使用できません。']);
+        if (preg_match('/[^一-龯ぁ-んァ-ヶーａ-ｚＡ-Ｚ]/u', $user->name))
+        {
+            return back()->withErrors(['name' => '記号や数字は使用できません。']);
+        }
+
+        if (mb_strlen($user->name) > 16)
+         {
+            return back()->withErrors(['name' => '文字数は全角16文字以内で入力してください。']);
         }
 
         if (User::where('email', $user_email)->exists()) 
         {
-            return redirect()->route('users.title')->with('error',"こちらのユーザーは既に登録されています。");
+            return back()->withErrors(['email' => 'こちらのユーザーは既に登録されています。']);
         }
 
+        if (!preg_match('/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/i', $user_email)) 
+        {
+            return back()->withErrors(['email' => '正しいメールアドレスを入力してください。']);
+        }
+
+        if (strlen($password) < 8 || strlen($password) > 16) 
+        {
+        return back()->withErrors(['password' => 'パスワードは8文字以上16文字以下で入力してください。']);
+        }
+
+        if (!preg_match('/^[a-zA-Z0-9]+$/', $password)) {
+            return back()->withErrors(['password' => 'パスワードは英数字のみで入力してください。']);
+        }
+
+        if ($password !== $password_confirmation) {
+            return back()->withErrors(['password' => 'パスワードが一致しません。']);
+        }
+
+        $user->password = bcrypt($password);//パスワードの暗号化
         $user->email = $user_email;
+
         $user->save();
 
         return redirect()->route('home.index');

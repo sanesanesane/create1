@@ -20,7 +20,7 @@
                         <label for="name">名前</label><br>
                         <input type="text" id="name" name="name" value="{{ old('name') }}" required>
                         @error('name')
-                            <div>{{ $message }}</div>
+                            <div style="color: red;">{{ $message }}</div>
                         @enderror
                     </div>
 
@@ -28,21 +28,23 @@
                         <label for="email">メールアドレス</label><br>
                         <input type="email" id="email" name="email" value="{{ old('email') }}" required>
                         @error('email')
-                            <div>{{ $message }}</div>
+                            <div style="color: red;">{{ $message }}</div>
                         @enderror
                     </div>
                     <div>
                         <label for="password">パスワード</label><br>
                         <input type="password" id="password" name="password" required>
                         @error('password')
-                            <div>{{ $message }}</div>
+                            <div style="color: red;">{{ $message }}</div>
                         @enderror
                     </div>
                     <div>
-                    <label for="password_confirmation">パスワード確認</label><br>
-                    <input type="password" id="password_confirmation" name="password_confirmation" required>
-
-                    </div>                        
+                        <label for="password_confirmation">パスワード確認</label><br>
+                        <input type="password" id="password_confirmation" name="password_confirmation" required>
+                        @error('password')
+                            <div style="color: red;">{{ $message }}</div>
+                        @enderror
+                    </div>
 
                     <div>
                         <p>※ユーザー名は全角、パスワードは半角英数字で入力してください。</p>
