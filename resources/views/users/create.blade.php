@@ -55,7 +55,7 @@
                         <button class="button-link">登録</button>
                     </div>
                     <div class="right-link">
-                        <input type="button" class="button-back" value="戻る" onclick= "history.back()">
+                        <a href="{{ route('users.title') }}"class="button-back">ホームへ戻る</a>
                     </div>
                 </div>
         </form>

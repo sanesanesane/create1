@@ -11,27 +11,9 @@
             <h1>〇作品登録</h1>
         </div>
 
-        <!-- エラーメッセージの表示 -->
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-
-        <!-- 成功メッセージの表示 -->
-        @if (session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
-
         <!-- 一般的なエラーメッセージの表示 -->
         @if (session('error'))
-            <div class="alert alert-danger">
+            <div class="alert alert-danger" style="color: red;>
                 {{ session('error') }}
             </div>
         @endif
@@ -43,12 +25,18 @@
             <div class="description">
                 <div class = "form-work">
                     <label>・作品の名前</label><br>
-                    <input type="text" name="work_name" maxlength="15" value="" placeholder="作品の名前">
+                    <input type="text" name="work_name" maxlength="35" value="" placeholder="作品の名前" required>
+                    @error('name')
+                            <div style="color: red;">{{ $message }}</div>
+                        @enderror
                 </div>
 
                 <div class = "form-work">
                     <label>・作者名</label><br>
-                    <input type="text" name="author_name" maxlength="15" value="" placeholder="作者名">
+                    <input type="text" name="author_name" maxlength="25" value="" placeholder="作者名" required>
+                    @error('artist')
+                    <div style="color: red;">{{ $message }}</div>
+                @enderror
                 </div>
 
                 <div class = "form-work">
@@ -59,6 +47,9 @@
                             <option value="{{ $subject->subject_ID }}">{{ $subject->subject_Name }}</option>
                         @endforeach
                     </select>
+                    @error('subject_id')
+                    <div style="color: red;">{{ $message }}</div>
+                @enderror
                 </div>
 
                 <div class="form-work">
@@ -69,6 +60,9 @@
                             <option value="{{ $age->age_ID }}">{{ $age->age_Name }}</option>
                         @endforeach
                     </select>
+                    @error('age_id')
+                    <div style="color: red;">{{ $message }}</div>
+                @enderror
                 </div>
 
                 <div class="form-work">
@@ -79,6 +73,9 @@
                             <option value="{{ $country->country_ID }}">{{ $country->country_Name }}</option>
                         @endforeach
                     </select>
+                    @error('country_id')
+                    <div style="color: red;">{{ $message }}</div>
+                @enderror
                 </div>
 
                 <div class="form-work">
@@ -89,11 +86,17 @@
                             <option value="{{ $museum->museum_ID }}">{{ $museum->museum_Name }}</option>
                         @endforeach
                     </select>
+                    @error('museum_id')
+                    <div style="color: red;">{{ $message }}</div>
+                @enderror
                 </div>
 
                 <div class="form-work">
                     <label>・作品説明</label><br>
-                    <textarea name="work_description" cols="60" rows="7"></textarea><br>
+                    <textarea name="work_description" cols="40" rows="7"></textarea><br>
+                    @error('description')
+                    <div style="color: red;">{{ $message }}</div>
+                @enderror
                 </div>
 
 
@@ -102,7 +105,8 @@
                         <button class="button-store">登録</button>
                     </div>
                     <div class="right-link">
-                        <input type="button" class="button-back" value="戻る" onclick= "history.back()">
+                        <a href="{{ route('home.index') }}"class="button-back">戻る</a>
+                        
                     </div>
                 </div>
             </div>

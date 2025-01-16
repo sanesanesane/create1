@@ -30,12 +30,28 @@ class MuseumController extends Controller
 
             $museums_name = trim($museums_name);
             $museums_name = mb_convert_kana($museums_name, 'ASKV', 'UTF-8');
+
             $museums_API  = trim($museums_API);
             $museums_API  = mb_convert_kana($museums_API, 'ASKV', 'UTF-8');
 
             if (Museum::where('museum_Name', $museums_name)->exists()) 
             {
                 return redirect()->route('museums.index')->with('error',"この施設は既に登録されています。");
+            }
+
+            if(mb_strlen($museums_name, 'UTF-8') > 15)
+            {
+                return back()->withErrors(['name' => '最大入力文字は15文字までです。']);
+            }
+
+            if (preg_match('/[^一-龯ぁ-んァ-ヶーａ-ｚＡ-Ｚ]/u', $museums_name))
+            {
+                return back()->withErrors(['name' => '記号や数字は使用できません。']);
+            }
+
+            if (preg_match('/[^一-龯ぁ-んァ-ヶーａ-ｚＡ-Ｚ]/u', $museums_API))
+            {
+                return back()->withErrors(['API' => '記号や数字は使用できません。']);
             }
 
             $museums -> museum_Name = $museums_name;

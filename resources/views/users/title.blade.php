@@ -15,32 +15,8 @@
 
         <div class="description">
             <h2>・説明</h2>
-            <p>このアプリは読みたい本や行きたい博物館、美術館を登録できます。登録した情報を科目や年代ごとに整理できるため体系的な知見を獲得するのに役立ちます。</p>
+            <p>このアプリでは、行きたい博物館や美術館などの施設を登録出来ます。科目や年代ごとに情報を整理出来るため、体系的に知識を深めるのに役立つ機能が特徴です。</p>
         </div>
-
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-
-        <!-- 成功メッセージの表示 -->
-        @if (session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
-
-        <!-- 一般的なエラーメッセージの表示 -->
-        @if (session('error'))
-            <div class="alert alert-danger">
-                {{ session('error') }}
-            </div>
-        @endif
 
         <div class="links">
             <div class="left-link">

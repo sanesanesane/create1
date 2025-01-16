@@ -26,16 +26,16 @@ class AgeController extends Controller
             $age_name = trim($age_name);
             $age_name = mb_convert_kana($age_name, 'ASKV', 'UTF-8');
 
-            if(mb_strlen($age_name, 'UTF-8') > 8)
+            if(mb_strlen($age_name, 'UTF-8') > 15)
             {
-                return redirect()->route('ages.index')->with('error',"最大入力文字は8文字までです。");
+                return back()->withErrors(['name' => '最大入力文字は15文字までです。']);
             }
 
             if (Age::where('age_Name', $age_name)->exists()) 
             {
-                return redirect()->route('ages.index')->with('error',"この年代は既に登録されています。");
+                return back()->withErrors(['name' => 'この地域は既に登録されています。']);
             }
-            
+
             $age->age_Name =$age_name;
             $age->user_id = auth()->id();
             $age->save(); //保存

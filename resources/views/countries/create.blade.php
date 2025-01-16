@@ -15,15 +15,18 @@
             <div class="description">
                 <div class = "form-work">
                     <label>・地域名</label><br>
-                    <input type="text" name="country_name" maxlength="15" value="" placeholder="地域名"><br>
+                    <input type="text" name="country_name" maxlength="20" value="" placeholder="地域名" required><br>
                 </div>
+                @error('name')
+                <div style="color: red;">{{ $message }}</div>
+            @enderror
             </div>
             <div class="links">
                 <div class="left-link">
                     <button class="button-store">登録</button>
                 </div>
                 <div class="right-link">
-                    <input type="button" class="button-back" value="戻る" onclick= "history.back()">
+                    <a href="{{ route('dashboard.menu') }}"class="button-back">戻る</a>  
                 </div>
             </div>
         </form>

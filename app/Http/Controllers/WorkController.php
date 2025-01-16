@@ -37,9 +37,19 @@ class WorkController extends Controller
         $work_name = trim($work_name);
         $work_name = mb_convert_kana($work_name, 'ASKV', 'UTF-8');//全角に変換
 
-        if(mb_strlen($work_name, 'UTF-8') > 8)
+        if(mb_strlen($work_name, 'UTF-8') > 30)
         {
-            return redirect()->route('works.create')->with('error',"最大入力文字は8文字までです。");
+            return back()->withErrors(['name' => '最大入力文字は30文字までです。']);
+        }
+
+        if (preg_match('/[^\x{3000}-\x{FF9F}]/u', $work_name)) 
+        {
+            return back()->withErrors(['name' => '全角文字のみ使用してください。']);
+        }
+
+        if (preg_match('/[^一-龯ぁ-んァ-ヶーａ-ｚＡ-Ｚ]/u', $work_name))
+        {
+            return back()->withErrors(['name' => '記号や数字は使用できません。']);
         }
 
         if (Work::where('work_name', $work_name)->exists()) 
@@ -47,9 +57,61 @@ class WorkController extends Controller
             return redirect()->route('works.create')->with('error',"この作品は既に登録されています。");
         }
 
+        if(mb_strlen($work->work_artist, 'UTF-8') > 20)
+        {
+            return back()->withErrors(['artist' => '最大入力文字は20文字までです。']);
+        }
+
+        if (preg_match('/[^\x{3000}-\x{FF9F}]/u', $work->work_artist)) 
+        {
+            return back()->withErrors(['artist' => '全角文字のみ使用してください。']);
+        }
+
+        if (preg_match('/[^一-龯ぁ-んァ-ヶーａ-ｚＡ-Ｚ]/u', $work->work_artist))
+        {
+            return back()->withErrors(['artist' => '記号や数字は使用できません。']);
+        }
+
+        $work_description = $request->input('work_description');
+        $work_description = trim($work_description);
+        $work_description = mb_convert_kana($work_description, 'ASKV', 'UTF-8');//全角に変換
+
+        if(mb_strlen($work_description, 'UTF-8') > 400)
+        {
+            return back()->withErrors(['description' => '最大入力文字は400文字までです']);
+        }
+
+        if (preg_match('/[^\x{3000}-\x{FF9F}]/u', $work_description)) 
+        {
+            return back()->withErrors(['description' => '全角文字のみ使用してください。']);
+        }
+
+        if (preg_match('/[^一-龯ぁ-んァ-ヶーａ-ｚＡ-Ｚ]/u', $work_description))
+        {
+            return back()->withErrors(['description' => '記号や数字は使用できません。']);
+        }
+
+
+        $work->work_description = $work_description;
         
         $work->work_name = $work_name;
         $work->user_id = auth()->id();
+
+        if ($request->input('subject_id') === null || $request->input('subject_id') === '') {
+            return back()->withErrors(['subject_id' => '科目を必ず選択してください。']);
+        }
+
+        if ($request->input('age_id') === null || $request->input('age_id') === '') {
+            return back()->withErrors(['age_id' => '年代を必ず選択してください。']);
+        }
+
+        if ($request->input('country_id') === null || $request->input('country_id') === '') {
+            return back()->withErrors(['country_id' => '地域を必ず選択してください。']);
+        }
+
+        if ($request->input('museum_id') === null || $request->input('museum_id') === '') {
+            return back()->withErrors(['museum_id' => '科目を必ず選択してください。']);
+        }
 
         $work->save(); //保存
 

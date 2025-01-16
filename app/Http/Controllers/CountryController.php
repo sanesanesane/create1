@@ -28,14 +28,19 @@ class CountryController extends Controller
         $country_name = trim($country_name);
         $country_name = mb_convert_kana($country_name, 'ASKV', 'UTF-8');
 
-        if(mb_strlen($country_name, 'UTF-8') > 16)
+        if(mb_strlen($country_name, 'UTF-8') > 15)
         {
-            return redirect()->route('countries.index')->with('error',"最大入力文字は8文字までです。");
+          return back()->withErrors(['name' => '最大入力文字は15文字までです。']);
         }
 
         if (Country::where('country_Name', $country_name)->exists()) 
         {
-            return redirect()->route('countries.index')->with('error',"この地域は既に登録されています。");
+            return back()->withErrors(['name' => 'この地域は既に登録されています。']);
+        }
+
+        if (preg_match('/[^一-龯ぁ-んァ-ヶーａ-ｚＡ-Ｚ]/u', $country_name))
+        {
+            return back()->withErrors(['name' => '記号や数字は使用できません。']);
         }
 
 

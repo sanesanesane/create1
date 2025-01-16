@@ -28,14 +28,19 @@ class SubjectController extends Controller
         $subject_name = trim($subject_name);
         $subject_name = mb_convert_kana($subject_name, 'ASKV', 'UTF-8');
 
-        if(mb_strlen($subject_name, 'UTF-8') > 16)
+        if(mb_strlen($subject_name, 'UTF-8') > 15)
         {
-            return redirect()->route('subjects.index')->with('error',"最大入力文字は16文字までです。");
+            return back()->withErrors(['name' => '最大入力文字は15文字までです。']);
+        }
+
+        if (preg_match('/[^一-龯ぁ-んァ-ヶーａ-ｚＡ-Ｚ]/u', $subject_name))
+        {
+            return back()->withErrors(['name' => '記号や数字は使用できません。']);
         }
 
         if (Subject::where('subject_Name', $subject_name)->exists()) 
         {
-            return redirect()->route('subjects.index')->with('error',"この科目名は既に登録されています。");
+            return back()->withErrors(['name' => 'その科目名は既に登録されています。']);
         }
 
         //保存する

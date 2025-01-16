@@ -9,7 +9,7 @@
 <body>
     <div class="container">
         <div>
-            <h1>ログイン</h1>
+            <h1>〇ログイン</h1>
         </div>
 
         <form method="POST" action="{{ route('users.login') }}">
@@ -20,14 +20,15 @@
                         <label for="email">メールアドレス</label><br>
                         <input type="email" id="email" name="email" value="{{ old('email') }}" required>
                         @error('email')
+                            <!--使わないかも-->
                             <div>{{ $message }}</div>
                         @enderror
                     </div>
                     <div>
                         <label for="password">パスワード</label><br>
                         <input type="password" id="password" name="password" required>
-                        @error('password')
-                            <div>{{ $message }}</div>
+                        @error('login') <!--エラーメッセージ用-->
+                        <div style="color: red;">{{ $message }}</div>
                         @enderror
                     </div>
                 </div>
