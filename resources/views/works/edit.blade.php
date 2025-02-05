@@ -19,18 +19,21 @@
             <div class="description">
                 <div class = "form-work">
                     <label>作品の名前</label><br>
-                    <input type="text" name="work_name" maxlength="15"
-                        value="{{ old('work_name', $work->work_name) }}"><br>
+                    <input type="text" name="work_name" maxlength="35"
+                        value="{{ old('work_name', $work->work_name) }}"  required><br>
+                        @error('name')
+                        <div style="color: red;">{{ $message }}</div>
+                    @enderror
                 </div>
                 
                 <div class = "form-work">
                     <label>作者名</label><br>
-                    <input type="text" name="author_name" maxlength="15"
+                    <input type="text" name="author_name" maxlength="25"
                         value="{{ old('author_name', $work->work_artist) }}"><br>
                 </div>
                 <div class = "form-work">
                     <label for="subject-id">{{ __('科目') }}</label><br>
-                    <select class="form-control" id="subject-id" name="subject_id" style="width: 100px; height: 20px;">
+                    <select class="form-control" id="subject-id" name="subject_id">
                         @foreach ($subjects as $subject)
                             <option
                                 value="{{ $subject->subject_ID }}"{{ old('subject_id', $work->subject_id) == $subject->subject_ID ? 'selected' : '' }}>
