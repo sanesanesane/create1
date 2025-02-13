@@ -61,10 +61,13 @@ Route::get('/test', function () {
 
 
 //〇認証機能関連
+//ユーザー登録
 Route::get('/users/create',[UserController::class,'create'])->name('users.create');
 Route::post('/users/register',[UserController::class,'register'])->name('users.register');
+//ユーザーログイン
 Route::get('/users/loginpage',[UserController::class,'loginpage'])->name('users.loginpage');
 Route::post('/users/login',[UserController::class,'login'])->name('users.login');
+
 Route::get('/users/show',[UserController::class,'show'])->name('users.show');
 Route::post('/users/logout',[UserController::class,'logout'])->name('users.logout');
 Route::get('/users/title',[UserController::class,'title'])->name('users.title');
