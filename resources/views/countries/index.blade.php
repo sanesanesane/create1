@@ -39,7 +39,7 @@
                 <tr>
                     <th class="number">番号</th>
                     <th class="name">名前</th>
-                    <th class="edit">詳細</th>
+                    <th class="edit">編集</th>
                     <th class="delete">削除</th>
                 </tr>
             </thead>
@@ -49,7 +49,7 @@
                         <td class="number">{{ $country->country_ID }}</td>
                         <td class="name">{{ $country->country_Name }}</td>
                         <td class="edit">
-                                <a href="{{ route('countries.edit', $country->country_ID) }}" class="button-store">詳細</a>
+                                <a href="{{ route('countries.edit', $country->country_ID) }}" class="button-store">編集</a>
 
                         <td class="delete">
                             <form action="{{ route('countries.delete', $country->country_ID) }}" method="post">
@@ -63,7 +63,7 @@
                 @endforeach
             </tbody>
         </table>
-        <div class="right-link">
+        <div>
             <a href="{{ route('dashboard.title') }}" class="button-back">戻る</a>
         </div>
     </div>

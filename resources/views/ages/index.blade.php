@@ -43,7 +43,7 @@
                 <tr>
                     <th class="number">番号</th>
                     <th class="name">名前</th>
-                    <th class="edit">詳細</th>
+                    <th class="edit">編集</th>
                     <th class="delete">削除</th>
                 </tr>
             </thead>
@@ -55,14 +55,14 @@
                         <td class="name">{{ $age->age_Name }}</td>
                         
                             <td class="edit">
-                                <a href="{{ route('ages.edit', $age->age_ID) }}" class="button-store">詳細
+                                <a href="{{ route('ages.edit', $age->age_ID) }}" class="button-store">編集
                             </a>
 
                             <td class="delete">
                             <form action="{{ route('ages.delete', $age->age_ID) }}" method="post">
                                 @csrf
                                 <p>
-                                    <input type="submit" value="詳細" class="button-delete ">
+                                    <input type="submit" value="削除" class="button-delete ">
                                 </p>
                             </form>
                         </td>
@@ -70,7 +70,7 @@
                 @endforeach
             </tbody>
         </table>
-        <div class="right-link">
+        <div>
             <a href="{{ route('dashboard.title') }}" class="button-back">戻る</a>
         </div>
     </div>

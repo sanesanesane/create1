@@ -27,6 +27,7 @@
             <div>
                 <a href="{{ route('home.index') }}"class="button-back">ホームへ戻る</a>
             </div>
+    </div>
 
 </body>
 

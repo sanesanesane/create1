@@ -20,6 +20,9 @@
                 <div class = "form-work">
                     <label>・科目</label><br>
                     <input type="text" name="subject_name" maxlength="15" value="{{old("subject_name" , $subject->subject_Name) }}" ><br>
+                    @error('name')
+                    <div style="color: red;">{{ $message }}</div>
+                @enderror
                 </div>
             </div>
             <div class="links">
@@ -27,7 +30,7 @@
                     <input type="submit" class="button-store">
                 </div>
                 <div class="right-link">
-                    <a href="{{ route('subjects.index') }}"class="button-back">一覧へ戻る</a>
+                    <a href="{{ route('subjects.index') }}"class="button-back">戻る</a>
                 </div>
             </div>
         </form>
