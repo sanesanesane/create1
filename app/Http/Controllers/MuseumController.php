@@ -16,7 +16,6 @@ class MuseumController extends Controller
         // 本の作成フォームを表示
         public function create()
         {
-    
             return view('museums.create');
         }
     
@@ -36,7 +35,7 @@ class MuseumController extends Controller
 
             if (Museum::where('museum_Name', $museums_name)->exists()) 
             {
-                return redirect()->route('museums.index')->with('error',"この施設は既に登録されています。");
+                return back()->withErrors(['name' =>'この施設は既に登録されています。']);
             }
 
             if(mb_strlen($museums_name, 'UTF-8') > 15)

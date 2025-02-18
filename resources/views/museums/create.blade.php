@@ -31,7 +31,7 @@
                 </div>
                 <div class = "form-work">
                     <label>・美術館内容</label><br>
-                    <textarea name="museum_content"cols="60" rows="7" placeholder="概要"></textarea><br>
+                    <textarea name="museum_content"cols="60" rows="7" placeholder="概要" required></textarea><br>
                 </div>
                 <div class="links">
                     <div class="left-link">

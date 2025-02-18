@@ -3,6 +3,14 @@
 <head>
     <title>作品一覧</title>
     <link rel="stylesheet" href="{{ asset('css/sane.css') }}">
+    <script>
+    <!-- function EVENT3()
+    {
+    if (confirm ("本当に削除しますか？"))
+    {location.href="wp1.html"}
+     else {location.href="wp2.html"}
+    }-->
+    </script>
 </head>
 
 <body>
@@ -11,7 +19,7 @@
     <h2>〇作品一覧</h2>
         </div>
     <form method="GET" action="{{ route('works.index') }}" class="form-search">
-        <input type="text" name="search" placeholder="検索キーワードを入力" value="{{ request('search') }}" class="form-search">
+        <input type="text" name="search" placeholder="名前を入力" value="{{ request('search') }}" class="form-search">
         <button type="submit" class="button-search">検索</button>
     </form>
 
@@ -65,7 +73,7 @@
                         <form action="{{ route('works.delete', $work->work_id) }}" method="post">
                             @csrf
                             <p>
-                                <input type="submit" value="削除" class="button-delete">
+                                <input type="submit" value="削除" class="button-delete" onclick="EVENT3()">
                             </p>
                         </form>
                     </td>
