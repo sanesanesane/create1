@@ -4,12 +4,14 @@
     <title>作品一覧</title>
     <link rel="stylesheet" href="{{ asset('css/sane.css') }}">
     <script>
-    <!-- function EVENT3()
+    function EVENT3(event)//deleteはJSの変数に該当するために使用不可。
     {
-    if (confirm ("本当に削除しますか？"))
-    {location.href="wp1.html"}
-     else {location.href="wp2.html"}
-    }-->
+        event.preventDefault(); // 確認した後に削除させるために必要！
+        if (confirm("本当に削除しますか？")) 
+        {
+        event.target.closest("form").submit(); // submitを探して実行する。
+        }
+    }
     </script>
 </head>
 
@@ -73,7 +75,7 @@
                         <form action="{{ route('works.delete', $work->work_id) }}" method="post">
                             @csrf
                             <p>
-                                <input type="submit" value="削除" class="button-delete" onclick="EVENT3()">
+                                <input type="submit" value="削除" class="button-delete" onclick="EVENT3(event)">
                             </p>
                         </form>
                     </td>
@@ -81,6 +83,7 @@
             @endforeach
         </tbody>
     </table>
+
     <div>
         <a href="{{ route('home.index') }}">ホームへ戻る</a>
     </div>

@@ -9,6 +9,7 @@ use App\MOdels\Age;
 use App\Models\Museum;
 use Symfony\Component\Mime\Test\Constraint\EmailSubjectContains;
 use Illuminate\Support\HtmlString;
+use App\Person;
 
 
 class MuseumController extends Controller
@@ -71,7 +72,6 @@ class MuseumController extends Controller
     $query = Museum::where('museum_Name', '!=', '削除済み')
     ->where('user_id', $user_id);
 
-
     $search = $request->input('search');
     $search = trim($search);
 
@@ -82,8 +82,7 @@ class MuseumController extends Controller
             $q->where('museum_API', 'LIKE', "%$search%");
         });
     }
-
-    $museums = $query->paginate(10);
+    $museums = $query->simplePaginate(6);
 
     return view('museums.index', compact('museums'));
 }

@@ -17,14 +17,13 @@ class UserController extends Controller
     //ユーザー登録コード
     public function register(Request $request)
     {
-        $user = new User();//新しいユーザーを作成
+        $user = new User();//新しいユーザーを定義する。
         $user_email =$request->input('email');//e-mailの入力（同じユーザーをはじく用）
-        $user->name = $request->input('name');//名前の入力
-        $password = $request->input('password');
-        $password_confirmation = $request->input('password_confirmation');
-        $user->email = $request->input('email');//e-mailの入力
+        $user->name = $request->input('name');//名前の入力を行う。
+        $password = $request->input('password');//パスワード変数を定義する。
+        $password_confirmation = $request->input('password_confirmation');//確認用パスワードの変数を定義する。
 
-
+        //〇名前を全角文字のみにする。
         if (preg_match('/[^\x{3000}-\x{FF9F}]/u', $user->name)) 
         {
             return back()->withErrors(['name' => '全角文字のみ使用してください。']);
@@ -35,21 +34,24 @@ class UserController extends Controller
             return back()->withErrors(['name' => '記号や数字は使用できません。']);
         }
 
+        //〇文字数を設定する。
         if (mb_strlen($user->name) > 16)
          {
             return back()->withErrors(['name' => '文字数は全角16文字以内で入力してください。']);
         }
-
+        
+        //〇同じユーザーを弾く
         if (User::where('email', $user_email)->exists()) 
         {
             return back()->withErrors(['email' => 'こちらのユーザーは既に登録されています。']);
         }
-
+        
+        //〇正しくない形式のメールアドレスを弾く
         if (!preg_match('/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/i', $user_email)) 
         {
             return back()->withErrors(['email' => '正しいメールアドレスを入力してください。']);
         }
-
+        //〇パスワードの設定
         if (strlen($password) < 8 || strlen($password) > 16) 
         {
         return back()->withErrors(['password' => 'パスワードは8文字以上16文字以下で入力してください。']);
@@ -58,18 +60,17 @@ class UserController extends Controller
         if (!preg_match('/^[a-zA-Z0-9]+$/', $password)) {
             return back()->withErrors(['password' => 'パスワードは英数字のみで入力してください。']);
         }
-
+        //〇パスワードと確認用パスワードが一致しているか
         if ($password !== $password_confirmation) {
             return back()->withErrors(['password' => 'パスワードが一致しません。']);
         }
 
         $user->password = bcrypt($password);//パスワードの暗号化
-        $user->email = $user_email;
+        $user->email = $user_email;//変数$user_emailをユーザーの$emailに定義する。
 
         $user->save();
 
         return redirect()->route('home.index');
-        // ダッシュボードやホームページにリダイレクト
     }
 
     //ユーザーログインのコード
