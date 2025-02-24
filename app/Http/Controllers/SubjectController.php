@@ -54,13 +54,15 @@ class SubjectController extends Controller
     
     public function index()
     {
-        $user_id = auth()->id(); 
-        $subjects = Subject::where('user_id', $user_id)
-        ->where('subject_Name', '!=', '削除済み')
-        ->where('subject_Name', '!=', '科目を選択してください。')
-        ->get();
-    
-        return view('subjects.index',compact('subjects'));
+        {
+            $user_id = auth()->id(); 
+            $subjects = Subject::where('user_id', $user_id)
+                ->where('subject_Name', '!=', '削除済み')
+                ->where('subject_Name', '!=', '科目を選択してください。')
+                ->simplePaginate(3); // ここで直接 paginate(3) を適用
+        
+            return view('subjects.index', compact('subjects'));
+        }
     }
 
     public function delete(Request $request, $subject_ID)

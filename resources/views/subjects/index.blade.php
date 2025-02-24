@@ -67,6 +67,7 @@
                 @endforeach
             </tbody>
         </table>
+        {{ $subjects->links() }}
 </div>       
         <div>
             <a href="{{ route('dashboard.title') }}" class="button-back">戻る</a>
