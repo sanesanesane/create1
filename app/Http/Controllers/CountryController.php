@@ -59,7 +59,7 @@ class CountryController extends Controller
         $countries=Country::where('user_id', $user_id)
         ->where('country_Name', '!=', '削除済み')
         ->where('country_Name','!=','地域を選択してください。')
-        ->get();
+        ->simplePaginate(5);
 
         return view('countries.index',compact('countries'));
     }

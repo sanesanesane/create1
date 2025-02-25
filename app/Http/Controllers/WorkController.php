@@ -139,7 +139,7 @@ class WorkController extends Controller
             });
         }
     
-        $works = $query->paginate(10);
+        $works = $query->simplePaginate(6);
         return view('works.index', compact('works'));
     }
     

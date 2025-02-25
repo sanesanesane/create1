@@ -21,7 +21,7 @@
     <h2>〇作品一覧</h2>
         </div>
     <form method="GET" action="{{ route('works.index') }}" class="form-search">
-        <input type="text" name="search" placeholder="名前を入力" value="{{ request('search') }}" class="form-search">
+        <input type="text" name="search" placeholder="名前を入力" value="{{ request('search') }}" class="form-search" required>
         <button type="submit" class="button-search">検索</button>
     </form>
 
@@ -85,7 +85,7 @@
     </table>
     {{ $works->links() }}
     <div>
-        <a href="{{ route('home.index') }}">ホームへ戻る</a>
+    <a href="{{ route('home.index') }}"class="button-back">ホームへ戻る</a>
     </div>
 </body>
 

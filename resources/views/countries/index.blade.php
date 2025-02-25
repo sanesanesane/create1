@@ -63,6 +63,7 @@
                 @endforeach
             </tbody>
         </table>
+        {{ $countries->links() }}
         <div>
             <a href="{{ route('dashboard.title') }}" class="button-back">戻る</a>
         </div>

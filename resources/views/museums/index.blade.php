@@ -39,7 +39,7 @@
 
         <div>
         <form method="GET" action="{{ route('museums.index') }}" class="form-search" >
-            <input type="text" name="search" placeholder="住所一部検索" value="{{ request('search') }}" class="form-search">
+            <input type="text" name="search" placeholder="住所一部検索" value="{{ request('search') }}" class="form-search" required>
             <button type="submit" class="button-search" >検索</button>
         </form>
         </div>
@@ -68,9 +68,9 @@
                 @endforeach
             </tbody>
         </table>
-
+        {{ $museums->links() }}
         <div>
-            <a href="{{ route('home.index') }}">ホームへ戻る</a>
+            <a href="{{ route('home.index') }}"class="button-back">ホームへ戻る</a>
         </div>
     </div>
 </body>

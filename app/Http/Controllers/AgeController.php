@@ -20,12 +20,17 @@ class AgeController extends Controller
 
         public function store(Request $request)
         {
+            //変数ageを定義
             $age = new Age;
+            //入力した名前をage_nameとして定義する。
             $age_name = $request->input('age_name');
-
+            //空白があった場合、空白を削除する。
             $age_name = trim($age_name);
+            //全角に自動変換する
             $age_name = mb_convert_kana($age_name, 'ASKV', 'UTF-8');
 
+            //〇バリデーション
+            //文字数を15文字までにする。
             if(mb_strlen($age_name, 'UTF-8') > 15)
             {
                 return back()->withErrors(['name' => '最大入力文字は15文字までです。']);
@@ -50,7 +55,7 @@ class AgeController extends Controller
             $ages = Age::where('user_id', $user_id)
             ->where('age_Name', '!=', '削除済み')
             ->where('age_Name', '!=', '年代を選択してください。')
-            ->get();
+            ->simplePaginate(5); 
 
             return view('ages.index',compact('ages'));
         }
