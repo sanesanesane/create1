@@ -4,6 +4,16 @@
 <head>
     <title>年代一覧</title>
     <link rel="stylesheet" href="{{ asset('css/sane.css') }}">
+    <script>
+        function EVENT3(event)//deleteはJSの変数に該当するために使用不可。
+        {
+            event.preventDefault(); // 確認した後に削除させるために必要！
+            if (confirm("本当に削除しますか？")) 
+            {
+            event.target.closest("form").submit(); // submitを探して実行する。
+            }
+        }
+        </script>
 </head>
 
 <body>
@@ -55,14 +65,14 @@
                         <td class="name">{{ $age->age_Name }}</td>
                         
                             <td class="edit">
-                                <a href="{{ route('ages.edit', $age->age_ID) }}" class="button-store">編集
+                                <a href="{{ route('ages.edit', $age->age_ID) }}" class="button-edit">編集
                             </a>
 
                             <td class="delete">
                             <form action="{{ route('ages.delete', $age->age_ID) }}" method="post">
                                 @csrf
                                 <p>
-                                    <input type="submit" value="削除" class="button-delete ">
+                                    <input type="submit" value="削除" class="button-delete" onclick="EVENT3(event)">
                                 </p>
                             </form>
                         </td>

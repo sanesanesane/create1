@@ -194,19 +194,41 @@ h1 {
 
 .button-delete {
     display: inline-block;
-    padding: 10px 20px; /* 内側の余白を設定 */
+    padding: 7px 15px; /* 内側の余白を設定 */
     text-align: center; /* テキストを中央に配置 */
-    font-size: 16px; /* 文字サイズを統一 */
+    font-size: 13px; /* 文字サイズを統一 */
     color: #fff; /* 文字色を白に */
     background-color: #FF0000; /* ボタンの背景色を赤に設定 */
     border: none; /* 枠線を消す */
     border-radius: 5px; /* 角を丸くする */
-    margin: 10px 0; /* 縦方向にマージンを追加 */
     text-decoration: none; /* リンクの下線を消す */
 }
 
 .button-delete:hover {
     background-color: #CC0000; /* ホバー時の色（少し濃い赤） */
+}
+
+.button-edit {
+    display: inline-block;
+    padding: 7px 15px;
+    background-color: #9acd32;
+    /* 黄緑色の背景色 */
+    text-align: center; /* テキストを中央に配置 */
+    color: white;
+    /* 文字色を白に */
+    text-decoration: none;
+    /* 下線を削除 */
+    border-radius: 5px;
+    /* 角を丸く */
+    font-size: 13px;
+    /* フォントサイズを調整 */
+    border: none;
+    /* 枠線を削除 */
+}
+
+.button-edit:hover {
+    background-color: #7fbf2f;
+    /* ホバー時の少し濃い黄緑色 */
 }
 
 

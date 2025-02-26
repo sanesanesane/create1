@@ -3,6 +3,16 @@
 <head>
     <title>地域一覧</title>
     <link rel="stylesheet" href="{{ asset('css/sane.css') }}">
+    <script>
+        function EVENT3(event)//deleteはJSの変数に該当するために使用不可。
+        {
+            event.preventDefault(); // 確認した後に削除させるために必要！
+            if (confirm("本当に削除しますか？")) 
+            {
+            event.target.closest("form").submit(); // submitを探して実行する。
+            }
+        }
+        </script>
 </head>
 
 <body>
@@ -49,13 +59,13 @@
                         <td class="number">{{ $country->country_ID }}</td>
                         <td class="name">{{ $country->country_Name }}</td>
                         <td class="edit">
-                                <a href="{{ route('countries.edit', $country->country_ID) }}" class="button-store">編集</a>
+                                <a href="{{ route('countries.edit', $country->country_ID) }}" class="button-edit">編集</a>
 
                         <td class="delete">
                             <form action="{{ route('countries.delete', $country->country_ID) }}" method="post">
                                 @csrf
                                 <p>
-                                    <input type="submit" value="詳細" class="button-delete ">
+                                    <input type="submit" value="削除" class="button-delete" onclick="EVENT3(event)">
                                 </p>
                             </form>
                         </td>
