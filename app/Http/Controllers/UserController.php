@@ -29,6 +29,7 @@ class UserController extends Controller
             return back()->withErrors(['name' => '全角文字のみ使用してください。']);
         }
 
+        //〇数字と記号の使用を制限する。
         if (preg_match('/[^一-龯ぁ-んァ-ヶーａ-ｚＡ-Ｚ]/u', $user->name))
         {
             return back()->withErrors(['name' => '記号や数字は使用できません。']);
@@ -68,7 +69,7 @@ class UserController extends Controller
         $user->password = bcrypt($password);//パスワードの暗号化
         $user->email = $user_email;//変数$user_emailをユーザーの$emailに定義する。
 
-        $user->save();
+        $user->save();//ユーザーの保存
 
         return redirect()->route('home.index');
     }
@@ -76,36 +77,39 @@ class UserController extends Controller
     //ユーザーログインのコード
     public function login(Request $request)
     {
-        $email = $request->input('email');
-        $password = $request->input('password');
+        $email = $request->input('email');//e-mailの入力をemailと変数を定義。
+        $password = $request->input('password');//パスワードの入力をpasswardと変数を定義。
 
+        //emailとpasswardが一致しているか確認。一致している場合はログイン処理を行う。
         if(Auth::attempt(['email' => $email , 'password' => $password]))
         {
             Auth::user()->name;
             return redirect()->route('home.index');
-
         }
+
+        //emailとpasswardが一致していない場合
         else
         {
             return back()->withErrors(['login' => 'ID又はパスワードが違います。']);
-
         }
-    
     }
+
+    //ログインページへ遷移
     public function loginpage ()
     {
         return view('users.test');
 
     }
 
+    //ユーザー詳細画面へ遷移
     public function show()
     {
-        $user = Auth::user();
+        $user = Auth::user();//現在ログイン中のユーザーを選択。
     
-        
         return view('users.show', compact('user'));
     }
 
+    //ユーザーのログアウト処理
     public function logout(Request $request)
     {
         Auth::logout(); 
