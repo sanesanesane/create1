@@ -22,6 +22,7 @@ class CountryController extends Controller
     // 科目をデータベースに保存
     public function store(Request $request)
     {
+        //変数$countryを定義。
         $country = new Country;
         $country_name = $request->input('country_name');
 

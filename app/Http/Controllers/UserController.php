@@ -52,6 +52,7 @@ class UserController extends Controller
         {
             return back()->withErrors(['email' => '正しいメールアドレスを入力してください。']);
         }
+
         //〇パスワードの設定
         if (strlen($password) < 8 || strlen($password) > 16) 
         {
@@ -74,7 +75,7 @@ class UserController extends Controller
         return redirect()->route('home.index');
     }
 
-    //ユーザーログインのコード
+    //〇ユーザーログインのコード
     public function login(Request $request)
     {
         $email = $request->input('email');//e-mailの入力をemailと変数を定義。
@@ -94,14 +95,14 @@ class UserController extends Controller
         }
     }
 
-    //ログインページへ遷移
+    //〇ログインページへ遷移
     public function loginpage ()
     {
         return view('users.test');
 
     }
 
-    //ユーザー詳細画面へ遷移
+    //〇ユーザー詳細画面へ遷移
     public function show()
     {
         $user = Auth::user();//現在ログイン中のユーザーを選択。
@@ -109,7 +110,7 @@ class UserController extends Controller
         return view('users.show', compact('user'));
     }
 
-    //ユーザーのログアウト処理
+    //〇ユーザーのログアウト処理
     public function logout(Request $request)
     {
         Auth::logout(); 
@@ -137,6 +138,7 @@ class UserController extends Controller
     
     }
 
+    //〇ユーザーの編集
     public function update(Request $request, User $user)
     {
         $user_email =$request->input('email');
