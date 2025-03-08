@@ -43,7 +43,7 @@ class AgeController extends Controller
             }
 
             $age->age_Name =$age_name;//入力した内容を定義
-            $age->user_id = auth()->id();//ログイン中のユーザーにuser_idを定義定義
+            $age->user_id = auth()->id();//ログイン中のユーザーにuser_idを定義
             $age->save(); //保存
 
             return redirect()->route('ages.create')->with('success', '作品が登録されました');

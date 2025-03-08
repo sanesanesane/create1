@@ -33,6 +33,7 @@
                     </div>
                 </div>
             </div>
+            <a href="{{ route('users.mail') }}">パスワードを忘れた場合はこちら</a>
             <div class="links">
                 <div class="left-link">
                     <button class="button-link">ログイン</button>
@@ -42,6 +43,7 @@
                 </div>
             </div>
         </form>
+    </div>
 </body>
 
 </html>

@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;//パスワードを忘れた場合について
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -72,10 +73,14 @@ Route::post('/users/logout',[UserController::class,'logout'])->name('users.logou
 
 Route::get('/users/show',[UserController::class,'show'])->name('users.show');
 Route::get('/users/title',[UserController::class,'title'])->name('users.title');
+//パスワードを忘れた場合
+Route::get('/users/mail',[UserController::class,'mail'])->name('users.mail');
+
 Route::get('/users/{user}/edit',[UserController::class,'edit'])->name('users.edit');
 Route::get('/users/{user}/editpass',[UserController::class,'editpass'])->name('users.editpass');
 Route::patch('/users/{user}/update',[UserController::class,'update'])->name('users.update');
 Route::patch('/users/{user}/updatepass',[UserController::class,'updatepass'])->name('users.updatepass');
+
 
 //〇追加要綱
 Route::get('/home', [HomeController::class, 'index'])->name('home.index');
@@ -163,3 +168,6 @@ Route::get('works/{work}/edit', [WorkController::class, 'edit'])->name('works.ed
 Route::patch('works/{work}', [WorkController::class, 'update'])->name('works.update');
 //作品削除
 Route::post('works/{worl_id}/delete',[WorkController::class, 'delete'])->name('works.delete');
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

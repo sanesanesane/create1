@@ -175,14 +175,17 @@ class UserController extends Controller
         // ダッシュボードやホームページにリダイレクト
     }
     
-    
-
     public function updatepass(Request $request, User $user)
     {
         $user->password = bcrypt($request->password);
         $user->update();
 
         return redirect()->route('home.index');
+    }
+
+    public function mail ()
+    {
+        return view('users.mail');
     }
 
 }
