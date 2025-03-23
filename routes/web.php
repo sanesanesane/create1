@@ -75,6 +75,8 @@ Route::get('/users/show',[UserController::class,'show'])->name('users.show');
 Route::get('/users/title',[UserController::class,'title'])->name('users.title');
 //パスワードを忘れた場合
 Route::get('/users/mail',[UserController::class,'mail'])->name('users.mail');
+//Route::get('/users/send',[UserController::class,'send'])->name('users.send');
+
 
 Route::get('/users/{user}/edit',[UserController::class,'edit'])->name('users.edit');
 Route::get('/users/{user}/editpass',[UserController::class,'editpass'])->name('users.editpass');
@@ -170,4 +172,4 @@ Route::patch('works/{work}', [WorkController::class, 'update'])->name('works.upd
 Route::post('works/{worl_id}/delete',[WorkController::class, 'delete'])->name('works.delete');
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

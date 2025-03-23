@@ -183,9 +183,16 @@ class UserController extends Controller
         return redirect()->route('home.index');
     }
 
+    //〇ユーザーパスワード変更を再依頼ページ
     public function mail ()
     {
         return view('users.mail');
     }
+    //〇ユーザから管理者へパスワード変更依頼メールを送信する。
+    public function send ()
+    {
+        return view('users.title');
+    }
+
 
 }
