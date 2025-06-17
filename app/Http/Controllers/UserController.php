@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Mail\TestMail; 
+use Illuminate\Support\Facades\Mail; 
 
 class UserController extends Controller
 {
@@ -192,15 +194,14 @@ class UserController extends Controller
     //〇ユーザから管理者へパスワード変更依頼メールを送信する。
     public function send (Request $request)
     {
-    $data = 
-    [
+    $data = [
         'title' => 'パスワード再設定のご案内',
         'message' => '以下のURLからパスワードの再設定を行ってください。'
     ];
-    Mail::to($request->email)->send(new TestMail($data));
+
+    $email = $request->input('email');
+
+    Mail::to($email)->send(new TestMail($data));
         return view('users.title');
     }
-
-
-
 }

@@ -76,7 +76,7 @@ Route::get('/users/show',[UserController::class,'show'])->name('users.show');
 Route::get('/users/title',[UserController::class,'title'])->name('users.title');
 //パスワードを忘れた場合
 Route::get('/users/mail',[UserController::class,'mail'])->name('users.mail');
-Route::get('/users/send',[UserController::class,'send'])->name('users.send');
+Route::post('/users/send',[UserController::class,'send'])->name('users.send');
 
 
 Route::get('/users/{user}/edit',[UserController::class,'edit'])->name('users.edit');
