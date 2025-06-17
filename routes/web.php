@@ -20,6 +20,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WorkController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\MailTestController;
 
 
 /*
@@ -75,13 +76,16 @@ Route::get('/users/show',[UserController::class,'show'])->name('users.show');
 Route::get('/users/title',[UserController::class,'title'])->name('users.title');
 //パスワードを忘れた場合
 Route::get('/users/mail',[UserController::class,'mail'])->name('users.mail');
-//Route::get('/users/send',[UserController::class,'send'])->name('users.send');
+Route::get('/users/send',[UserController::class,'send'])->name('users.send');
 
 
 Route::get('/users/{user}/edit',[UserController::class,'edit'])->name('users.edit');
 Route::get('/users/{user}/editpass',[UserController::class,'editpass'])->name('users.editpass');
 Route::patch('/users/{user}/update',[UserController::class,'update'])->name('users.update');
 Route::patch('/users/{user}/updatepass',[UserController::class,'updatepass'])->name('users.updatepass');
+
+//メール機能確認
+Route::get('/emails/send', [MailTestController::class, 'send'])->name('emails.send');
 
 
 //〇追加要綱

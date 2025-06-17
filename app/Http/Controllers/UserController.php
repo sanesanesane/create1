@@ -188,11 +188,19 @@ class UserController extends Controller
     {
         return view('users.mail');
     }
+    
     //〇ユーザから管理者へパスワード変更依頼メールを送信する。
-    public function send ()
+    public function send (Request $request)
     {
+    $data = 
+    [
+        'title' => 'パスワード再設定のご案内',
+        'message' => '以下のURLからパスワードの再設定を行ってください。'
+    ];
+    Mail::to($request->email)->send(new TestMail($data));
         return view('users.title');
     }
+
 
 
 }

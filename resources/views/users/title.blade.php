@@ -8,12 +8,12 @@
 </head>
 
 <body>
-    //枠を作ります。
+    <!--//枠を作ります。-->
     <div class="container">
         <div>
             <h1>〇作品登録メモへようこそ！</h1>
         </div>
-        //枠の中に作る枠
+        <!---//枠の中に作る枠---->
         <div class="description">
             <h2>・説明</h2>
             <p>このアプリでは、行きたい博物館や美術館などの施設を登録出来ます。科目や年代ごとに情報を整理出来るため、体系的に知識を深めるのに役立つ機能が特徴です。</p>
@@ -29,6 +29,10 @@
                 <p>※既に登録している方</p>
                 <a href="{{ route('users.loginpage') }}" class="button-link">ログイン</a>
             </div>
+        <div>
+            <a href="{{ route('emails.send') }}" class="button-link">てすと</a>
+        </div>
+
         </div>
     </div>
 </body>
