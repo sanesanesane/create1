@@ -30,7 +30,7 @@
                 <a href="{{ route('users.loginpage') }}" class="button-link">ログイン</a>
             </div>
         <div>
-            <a href="{{ route('emails.send') }}" class="button-link">てすと</a>
+            <a href="{{ route('users.editpass') }}" class="button-link">てすと</a>
         </div>
 
         </div>

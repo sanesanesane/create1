@@ -81,6 +81,7 @@ Route::post('/users/send',[UserController::class,'send'])->name('users.send');
 
 Route::get('/users/{user}/edit',[UserController::class,'edit'])->name('users.edit');
 Route::get('/users/{user}/editpass',[UserController::class,'editpass'])->name('users.editpass');
+
 Route::patch('/users/{user}/update',[UserController::class,'update'])->name('users.update');
 Route::patch('/users/{user}/updatepass',[UserController::class,'updatepass'])->name('users.updatepass');
 
