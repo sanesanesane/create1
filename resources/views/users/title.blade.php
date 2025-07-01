@@ -29,9 +29,7 @@
                 <p>※既に登録している方</p>
                 <a href="{{ route('users.loginpage') }}" class="button-link">ログイン</a>
             </div>
-        <div>
-            <a href="{{ route('users.editpass') }}" class="button-link">てすと</a>
-        </div>
+
 
         </div>
     </div>
