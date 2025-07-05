@@ -192,34 +192,32 @@ class UserController extends Controller
     }
     
     //〇ユーザから管理者へパスワード変更依頼メールを送信する。
-    public function send (Request $request)
-    {
-
+    public function send(Request $request)
+{
     $email = $request->input('email');
-    //入力されたメールアドレスがadminテーブルにあるか確認するコード。
-    if(Auth::attempt(['email' => $email ]))
-        {
-            Auth::user()->name;
-        }
-    //なければエラーをだすコード
-    else
-        {
-            return back()->withErrors(['email' => '登録されたメールアドレスと異なります。']);
-        }
 
-    $passchange =  route('users.editpass', ['user' => $user->id]);
+    // 1. メールアドレスでユーザー検索
+    $user = User::where('email', $email)->first();
 
-    $data = 
-    [
+    // 2. ユーザーがいない場合はエラー
+    if (!$user) {
+        return back()->withErrors(['email' => '登録されたメールアドレスと異なります。']);
+    }
+
+    // 3. パスワード変更用のURL作成
+    $passchange = route('users.editpass', ['user' => $user->id]);
+
+    // 4. メール本文のデータ
+    $data = [
         'title' => 'パスワード再設定のご案内',
         'message' => '以下のURLからパスワードの再設定を行ってください。',
-        'URL'=>'$passchange',
-
-        //メールアドレスが一致しているユーザーIDをキーにしてパスワード変更のURLを飛ばす記述。
-        //URLをクリックすると、特定のユーザーパスワード変更ページに飛ぶようになっている。
+        'URL' => $passchange,
     ];
 
+    // 5. メール送信
     Mail::to($email)->send(new TestMail($data));
-        return view('users.title');
-    }
+
+    // 6. 完了画面
+    return view('users.title');
+}
 }
