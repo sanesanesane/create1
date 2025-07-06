@@ -177,13 +177,38 @@ class UserController extends Controller
         // ダッシュボードやホームページにリダイレクト
     }
     
-    public function updatepass(Request $request, User $user)
-    {
-        $user->password = bcrypt($request->password);
-        $user->update();
+public function updatepass(Request $request, User $user)
+{
+    //変数の定義
+    $password = $request->input('password');
+    $password_confirmation = $request->input('password_confirmation');
 
-        return redirect()->route('home.index');
+    //長さの確認
+    if (strlen($password) < 8 || strlen($password) > 16) 
+    {
+        return back()->withErrors(['password' => 'パスワードは8文字以上16文字以下で入力してください。']);
     }
+
+    //文字の種類の確認
+    if (!preg_match('/^[a-zA-Z0-9]+$/', $password)) // ! =～ではないという意味。NOT
+    {
+        return back()->withErrors(['password' => 'パスワードは英数字のみで入力してください。']);
+    }
+
+    //パスワードが一致しているか
+    if ($password !== $password_confirmation) 
+    {
+        return back()->withErrors(['password' => 'パスワードが一致しません。']);
+    }
+
+    //更新する
+    $user->password = bcrypt($password);
+    $user->update();
+
+    // ⑥ 完了後に users.title にリダイレクト
+    return redirect()->route('users.title');
+}
+
 
     //〇ユーザーパスワード変更を再依頼ページ
     public function mail ()
@@ -193,31 +218,32 @@ class UserController extends Controller
     
     //〇ユーザから管理者へパスワード変更依頼メールを送信する。
     public function send(Request $request)
-{
+    {
     $email = $request->input('email');
 
-    // 1. メールアドレスでユーザー検索
+    //メールアドレスでユーザー検索
     $user = User::where('email', $email)->first();
 
-    // 2. ユーザーがいない場合はエラー
+    //ユーザーがいない場合はエラー
     if (!$user) {
         return back()->withErrors(['email' => '登録されたメールアドレスと異なります。']);
     }
 
-    // 3. パスワード変更用のURL作成
+    //パスワード変更用のURL作成
     $passchange = route('users.editpass', ['user' => $user->id]);
 
-    // 4. メール本文のデータ
+    //メール本文のデータ
     $data = [
         'title' => 'パスワード再設定のご案内',
         'message' => '以下のURLからパスワードの再設定を行ってください。',
         'URL' => $passchange,
     ];
 
-    // 5. メール送信
-    Mail::to($email)->send(new TestMail($data));
+    //メール送信
+    Mail::to($email)->send(new TestMail($data));//MaiLを＄email宛に送る。内容は$dataを参照すること。
 
-    // 6. 完了画面
+    //
     return view('users.title');
-}
+    }
+
 }

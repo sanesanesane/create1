@@ -175,6 +175,6 @@ Route::get('works/{work}/edit', [WorkController::class, 'edit'])->name('works.ed
 Route::patch('works/{work}', [WorkController::class, 'update'])->name('works.update');
 //作品削除
 Route::post('works/{worl_id}/delete',[WorkController::class, 'delete'])->name('works.delete');
-Auth::routes();
+
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
